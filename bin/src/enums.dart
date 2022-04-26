@@ -1,4 +1,4 @@
-library dart_ctags;
+part of dart_ctags;
 
 enum ArgumentsType {
   help,
