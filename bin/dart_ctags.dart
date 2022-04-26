@@ -6,6 +6,7 @@ import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:args/args.dart';
+import 'package:path/path.dart' as path;
 
 part 'src/arguments.dart';
 
@@ -19,8 +20,12 @@ void main(List<String> arguments) {
   final Arguments _arg = Arguments();
   final arg = _arg.run(arguments);
   if (arg == null) return;
-  final Tags _tags = Tags(arg.filePath);
+  final Tags _tags = Tags(arg.filePath.first);
   final File _file = File(arg.output);
   final lines = _tags.generate();
   _file.writeAsStringSync(lines.join("\n"));
+}
+
+class Item {
+  final String Hello = "";
 }
