@@ -3,7 +3,7 @@ part of dart_ctags;
 class Arguments {
   final ArgParser _parser = ArgParser();
 
-  Argument? run(List<String> args) {
+  Options? run(List<String> args) {
     _parser.addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
     _parser.addOption('output',
         abbr: 'o', help: 'Output file', valueHelp: 'File',defaultsTo: "./tags");
@@ -12,7 +12,7 @@ class Arguments {
       if (_result.arguments.isEmpty || _result['help']) {
         _help();
       }
-      return Argument(
+      return Options(
         filePath: _result.rest,
         output: _result['output'],
       );

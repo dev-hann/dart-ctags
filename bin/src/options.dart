@@ -1,7 +1,7 @@
 part of dart_ctags;
 
-class Argument {
-  const Argument({
+class Options {
+  const Options({
     required this.filePath,
     String? output,
   }) : output = output ?? "./tags";
@@ -15,8 +15,8 @@ class Argument {
     };
   }
 
-  factory Argument.fromMap(Map<String, dynamic> map) {
-    return Argument(
+  factory Options.fromMap(Map<String, dynamic> map) {
+    return Options(
       output: map['output'] as String,
       filePath: map['filePath'] as List<String>,
     );

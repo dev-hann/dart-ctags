@@ -14,14 +14,14 @@ part 'src/enums.dart';
 
 part 'src/tags.dart';
 
-part 'src/argument.dart';
+part 'src/options.dart';
 
 void main(List<String> arguments) {
   final Arguments _arg = Arguments();
-  final arg = _arg.run(arguments);
-  if (arg == null) return;
-  final Tags _tags = Tags(arg.filePath.first);
-  final File _file = File(arg.output);
+  final opts = _arg.run(arguments);
+  if (opts == null) return;
+  final Tags _tags = Tags(opts.filePath.first);
+  final File _file = File(opts.output);
   final lines = _tags.generate();
   _file.writeAsStringSync(lines.join("\n"));
 }
