@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+Hello	dart_ctags.dart	/final String Hello = "";/;"	f	access:public		class:Item	type:String
+Item	dart_ctags.dart	/class Item {/;"	c	access:public		type:class
+dart:io	dart_ctags.dart	/^;"	D		directive:import
+dart_ctags	dart_ctags.dart	/^;"	l		null
+import	dart_ctags.dart	/import/;"	i		type:directives
+main	dart_ctags.dart	/^;"	F	access:public		signature:(List<String> arguments)	type:void
+package:analyzer/dart/analysis/features.dart	dart_ctags.dart	/^;"	U		directive:import
+package:analyzer/dart/analysis/utilities.dart	dart_ctags.dart	/^;"	U		directive:import
+package:analyzer/dart/ast/ast.dart	dart_ctags.dart	/^;"	U		directive:import
+package:args/args.dart	dart_ctags.dart	/^;"	U		directive:import
+package:path/path.dart as path	dart_ctags.dart	/^;"	U		directive:import
+src/arguments.dart	dart_ctags.dart	/^;"	P		null
+src/enums.dart	dart_ctags.dart	/^;"	P		null
+src/options.dart	dart_ctags.dart	/^;"	P		null
+src/tags.dart	dart_ctags.dart	/^;"	P		null

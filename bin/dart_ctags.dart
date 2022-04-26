@@ -8,6 +8,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
+import 'src/tags/tag.dart';
+
 part 'src/arguments.dart';
 
 part 'src/enums.dart';
