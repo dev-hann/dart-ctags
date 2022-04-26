@@ -3,15 +3,19 @@ part of dart_ctags;
 class Arguments {
   final ArgParser _parser = ArgParser();
 
-  ArgResults? run(List<String> args) {
+  Argument? run(List<String> args) {
     _parser.addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
+    _parser.addOption('output',
+        abbr: 'o', help: 'Output file', valueHelp: 'File',defaultsTo: "./tags");
     try {
       final _result = _parser.parse(args);
       if (_result.arguments.isEmpty || _result['help']) {
         _help();
       }
-      print(_result.arguments);
-      return _result;
+      return Argument(
+        filePath: _result.rest,
+        output: _result['output'],
+      );
     } catch (e) {
       if (e is FormatException) {
         print(e.message);
