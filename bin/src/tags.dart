@@ -1,10 +1,11 @@
 part of dart_ctags;
 
-class Tags{
+class Tags {
   const Tags({
     required this.optionList,
     required this.filePath,
   });
+
   final List<String> optionList;
-  final String filePath;
+  final List<String> filePath;
 }
