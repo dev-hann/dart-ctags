@@ -6,10 +6,10 @@ class Arguments {
   Options? run(List<String> args) {
     _parser.addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
     _parser.addOption('output',
-        abbr: 'o', help: 'Output file', valueHelp: 'File',defaultsTo: "./tag");
+        abbr: 'o', help: 'Output file', valueHelp: 'File', defaultsTo: "./tag");
     try {
       final _result = _parser.parse(args);
-      if (_result.arguments.isEmpty || _result['help']) {
+      if (_result['help']) {
         _help();
       }
       return Options(

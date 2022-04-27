@@ -1,11 +1,13 @@
 part of dart_ctags;
 
+const _emptyPath = ['.'];
+
 class Options {
-  const Options({
-    required this.filePath,
-    String? output,
-  }) : output = output ?? "./tag";
-  final String output;
+  Options({
+    required List<String> filePath,
+    this.output,
+  }) : filePath = filePath.isNotEmpty ? filePath : _emptyPath;
+  final String? output;
   final List<String> filePath;
 
   Map<String, dynamic> toMap() {
@@ -13,12 +15,5 @@ class Options {
       'output': output,
       'filePath': filePath,
     };
-  }
-
-  factory Options.fromMap(Map<String, dynamic> map) {
-    return Options(
-      output: map['output'] as String,
-      filePath: map['filePath'] as List<String>,
-    );
   }
 }

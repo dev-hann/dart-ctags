@@ -5,6 +5,8 @@ import 'package:analyzer/dart/ast/ast.dart';
 import '../tag.dart';
 import 'src/import_tag_item.dart';
 import 'src/library_tag_item.dart';
+import 'src/part_of_tag_item.dart';
+import 'src/part_tag_item.dart';
 
 part 'src/import_tag.dart';
 
@@ -22,7 +24,6 @@ abstract class DirectiveTag extends Tag {
           kind: kind,
           filePath: filePath,
         );
-
 
   String replaceAllQuotes(String target) {
     return target.replaceAll("'", "").replaceAll('"', "");
@@ -47,10 +48,27 @@ abstract class DirectiveTag extends Tag {
     }
     final impList = _directiveTypeList<ImportDirective>(directiveList);
     if (impList.isNotEmpty) {
-      final importList = impList
+      final _list = impList
           .map((e) => e.childEntities.map((e) => e.toString()).toList())
           .toList();
-      final _tag = ImportTag(importList: importList, filePath: filePath);
+      final _tag = ImportTag(importList: _list, filePath: filePath);
+      _res.add(_tag);
+    }
+
+    final partList = _directiveTypeList<PartDirective>(directiveList);
+    if (partList.isNotEmpty) {
+      final _list = partList
+          .map((e) => e.childEntities.map((e) => e.toString()).toList())
+          .toList();
+      final _tag = PartTag(partList: _list, filePath: filePath);
+      _res.add(_tag);
+    }
+    final partOfList = _directiveTypeList<PartOfDirective>(directiveList);
+    if (partOfList.isNotEmpty) {
+      final _list = partOfList
+          .map((e) => e.childEntities.map((e) => e.toString()).toList())
+          .toList();
+      final _tag = PartOfTag(partList: _list, filePath: filePath);
       _res.add(_tag);
     }
     return _res;
