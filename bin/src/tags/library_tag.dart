@@ -2,14 +2,16 @@ part of tag;
 
 class LibraryTag extends Tag {
   LibraryTag({
-    required List<String> nameEntity,
-    required String path,
-  }) : super(
-          nameEntity: nameEntity,
-          path: path,
-          kind: TagKind.library,
-        );
+    required this.name,
+    required this.path,
+  }) : super(null);
+  final String name;
+  final String path;
 
   @override
-  String get filter => 'library';
+  String get headLine =>
+      'import\t$name\t/import/;\t${TagKind.library.short()}\tnull';
+
+  @override
+  void init(CompilationUnit unit) {}
 }
