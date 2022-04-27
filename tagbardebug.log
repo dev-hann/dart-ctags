@@ -1,0 +1,36 @@
+
+
+NVIM v0.8.0-dev
+Build type: RelWithDebInfo
+LuaJIT 2.1.0-beta3
+Compilation: /usr/bin/cc -g -O2 -fdebug-prefix-map=/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569=. -fstack-protector-strong -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 -DNVIM_TS_HAS_SET_MATCH_LIMIT -DNVIM_TS_HAS_SET_ALLOCATOR -O2 -g -Og -g -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wdouble-promotion -Wmissing-noreturn -Wmissing-format-attribute -Wmissing-prototypes -Wimplicit-fallthrough -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=malloc -Wsuggest-attribute=cold -Wvla -fstack-protector-strong -fno-common -fdiagnostics-color=auto -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/config -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/src -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/.deps/usr/include -I/usr/include -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/src/nvim/auto -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/include
+Compiled by buildd@lcy02-amd64-030
+
+Features: +acl +iconv +tui
+See ":help feature-compile"
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "/usr/share/nvim"
+
+Run :checkhealth for more info1970-01-16 21:46:45.331402: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:45.332091: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 21:46:45.332534: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:45.333936: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:45.335235: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:45.337279: goto_win(): wincmd p, 1
+1970-01-16 21:46:45.337531: goto_win(): 2wincmd w, 1
+1970-01-16 21:46:45.342749: goto_win(): 2wincmd w, 1
+1970-01-16 21:46:45.342926: goto_win(): 1wincmd w, 1
+1970-01-16 21:46:45.343102: AutoUpdate finished successfully
+1970-01-16 21:46:54.468123: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:54.468671: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 21:46:54.468958: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:54.469766: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:54.470464: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 21:46:54.471609: goto_win(): wincmd p, 1
+1970-01-16 21:46:54.472052: goto_win(): 2wincmd w, 1
+1970-01-16 21:46:54.482374: goto_win(): 2wincmd w, 1
+1970-01-16 21:46:54.482782: goto_win(): 1wincmd w, 1
+1970-01-16 21:46:54.483114: AutoUpdate finished successfully
+1970-01-16 21:46:59.184891: Closing Tagbar window due to QuitPre event
+1970-01-16 21:46:59.185057: goto_win(): 1wincmd w, 1

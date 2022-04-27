@@ -1,15 +1,19 @@
+import 'package:analyzer/dart/ast/ast.dart';
+
 import '../../tag.dart';
 
 class LibraryTagItem extends TagItem {
   LibraryTagItem(
-    String name,
+    List<String> name,
     String filePath,
+    int? lineNumber,
   ) : super(
-          name: name,
+        name: name,
           filePath: filePath,
           separator: '/^;"',
           kind: TagKind.library,
           type: "null",
+          lineNumber: lineNumber,
         );
 
   @override
@@ -18,6 +22,8 @@ class LibraryTagItem extends TagItem {
         filePath,
         separator,
         kind.short(),
+        lineNumberText,
         type,
       ];
+
 }

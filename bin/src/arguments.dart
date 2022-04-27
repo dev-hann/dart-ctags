@@ -5,16 +5,23 @@ class Arguments {
 
   Options? run(List<String> args) {
     _parser.addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
+    _parser.addFlag('line-numbers',
+        abbr: 'l', help: "Add Line Number", defaultsTo: true);
     _parser.addOption('output',
-        abbr: 'o', help: 'Output file', valueHelp: 'File', defaultsTo: "./tag");
+        abbr: 'o', help: 'Output file', valueHelp: 'File');
     try {
       final _result = _parser.parse(args);
       if (_result['help']) {
         _help();
       }
+      List<String> _list = _result.rest;
+      if (_list.isEmpty) {
+        _list = ['.'];
+      }
       return Options(
-        filePath: _result.rest,
+        filePath: _list,
         output: _result['output'],
+        lineNumber: _result['line-numbers'] ?? true,
       );
     } catch (e) {
       if (e is FormatException) {

@@ -1,0 +1,222 @@
+
+
+NVIM v0.8.0-dev
+Build type: RelWithDebInfo
+LuaJIT 2.1.0-beta3
+Compilation: /usr/bin/cc -g -O2 -fdebug-prefix-map=/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569=. -fstack-protector-strong -Wformat -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 -DNVIM_TS_HAS_SET_MATCH_LIMIT -DNVIM_TS_HAS_SET_ALLOCATOR -O2 -g -Og -g -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wdouble-promotion -Wmissing-noreturn -Wmissing-format-attribute -Wmissing-prototypes -Wimplicit-fallthrough -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=malloc -Wsuggest-attribute=cold -Wvla -fstack-protector-strong -fno-common -fdiagnostics-color=auto -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/config -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/src -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/.deps/usr/include -I/usr/include -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/src/nvim/auto -I/build/neovim-lpVjW1/neovim-0.7.0~ubuntu1+git202204211625-28fb40b16-dd05b3569/build/include
+Compiled by buildd@lcy02-amd64-030
+
+Features: +acl +iconv +tui
+See ":help feature-compile"
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "/usr/share/nvim"
+
+Run :checkhealth for more info1970-01-16 22:38:04.405342: Checking for Exuberant Ctags
+1970-01-16 22:38:04.405762: EscapeCtagsCmd called
+1970-01-16 22:38:04.405840: ctags_bin: ctags
+1970-01-16 22:38:04.405904: ctags_args (is a string): --version
+1970-01-16 22:38:04.406061: Escaped ctags command: 'ctags' --version
+1970-01-16 22:38:04.406135: Executing ctags command: 'ctags' --version
+1970-01-16 22:38:04.409958: Executing command: "'/bin/bash' '-c' ''ctags' --version'"
+1970-01-16 22:38:04.410047: Exit code: 0
+1970-01-16 22:38:04.410151: Command output:
+Universal Ctags 0.0.0, Copyright (C) 2015 Universal Ctags Team
+Universal Ctags is derived from Exuberant Ctags.
+Exuberant Ctags 5.8, Copyright (C) 1996-2009 Darren Hiebert
+  Compiled: Jan  6 2019, 23:23:29
+  URL: https://ctags.io/
+  Optional compiled features: +wildcards, +regex, +iconv, +option-directory, +xpath, +json, +interactive, +sandbox, +yaml
+
+1970-01-16 22:38:04.410224: Exit code: 0
+1970-01-16 22:38:04.410308: Checking Exuberant Ctags version
+1970-01-16 22:38:04.410367: Found Universal Ctags, assuming compatibility
+1970-01-16 22:38:04.410448: Initializing types
+1970-01-16 22:38:04.410506: Getting filetypes supported by Exuberant Ctags
+1970-01-16 22:38:04.410573: EscapeCtagsCmd called
+1970-01-16 22:38:04.410622: ctags_bin: ctags
+1970-01-16 22:38:04.410673: ctags_args (is a string): --list-languages
+1970-01-16 22:38:04.410811: Escaped ctags command: 'ctags' --list-languages
+1970-01-16 22:38:04.410882: Executing ctags command: 'ctags' --list-languages
+1970-01-16 22:38:04.414774: Executing command: "'/bin/bash' '-c' ''ctags' --list-languages'"
+1970-01-16 22:38:04.414868: Exit code: 0
+1970-01-16 22:38:04.426087: Detected dart_ctags, overriding typedef
+1970-01-16 22:38:04.427043: Detected gotags, overriding typedef
+1970-01-16 22:38:04.429718: Creating autocommands
+1970-01-16 22:38:04.430439: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.430546: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:04.430607: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.430766: New file, processing [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.430832: ProcessFile called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.430891: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.432035: typeinfo for file to process: {'ctagstype': 'dart', 'ftype': 'dart', 'kinddict': {'C': 8, 'D': 3, 'E': 11, 'F': 10, 'L': 5, 'M': 22, 'P': 6, 'U': 4, 'a': 19, 'c': 14, 'd': 15, 'e': 12, 'f': 20, 'g': 23, 'i': 2, 'l': 0, 'm': 21, 'o': 25, 'p': 7, 'r': 18, 's': 24, 't': 1, 'v': 9, 'w': 16, 'x': 13, 'z': 17, '?': 26}, 'ctagsargs': '-l', 'sro': ':', 'createKinddict': function('<SNR>96_createKinddict'), 'getKind': function('<SNR>96_getKind'), 'kind2scope': {'c': 'class', 'E': 'enum', 'x': 'mixin', 'i': 'directive', '?': 'unknown'}, 'ctagsbin': 'dart_ctags', 'scope2kind': {'enum': 'E', 'class': 'c', 'directive': 'i', 'mixin': 'x'}, 'kinds': [{'short': 'l', 'long': 'library', 'fold': 0, 'stl': 0}, {'short': 't', 'long': 'export', 'fold': 0, 'stl': 0}, {'short': 'i', 'long': 'imports', 'fold': 1, 'stl': 0}, {'short': 'D', 'long': 'dart', 'fold': 0, 'stl': 0}, {'short': 'U', 'long': 'pub', 'fold': 0, 'stl': 0}, {'short': 'L', 'long': 'local', 'fold': 0, 'stl': 0}, {'short': 'P', 'long': 'part', 'fold': 0, 'stl': 0}, {'short': 'p', 'long': 'part of', 'fold': 0, 'stl': 0}, {'short': 'C', 'long': 'consts', 'fold': 0, 'stl': 0}, {'short': 'v', 'long': 'variables', 'fold': 0, 'stl': 0}, {'short': 'F', 'long': 'functions', 'fold': 0, 'stl': 0}, {'short': 'E', 'long': 'enums', 'fold': 0, 'stl': 0}, {'short': 'e', 'long': 'constants', 'fold': 0, 'stl': 0}, {'short': 'x', 'long': 'mixins', 'fold': 0, 'stl': 0}, {'short': 'c', 'long': 'classes', 'fold': 0, 'stl': 0}, {'short': 'd', 'long': 'extends', 'fold': 0, 'stl': 0}, {'short': 'w', 'long': 'with', 'fold': 0, 'stl': 0}, {'short': 'z', 'long': 'implements', 'fold': 0, 'stl': 0}, {'short': 'r', 'long': 'constructors', 'fold': 0, 'stl': 0}, {'short': 'a', 'long': 'abstract functions', 'fold': 0, 'stl': 0}, {'short': 'f', 'long': 'fields', 'fold': 0, 'stl': 0}, {'short': 'm', 'long': 'methods', 'fold': 0, 'stl': 0}, {'short': 'M', 'long': 'static methods', 'fold': 0, 'stl': 0}, {'short': 'g', 'long': 'getters', 'fold': 0, 'stl': 0}, {'short': 's', 'long': 'setters', 'fold': 0, 'stl': 0}, {'short': 'o', 'long': 'operators', 'fold': 0, 'stl': 0}, {'short': '?', 'long': 'unknown', 'fold': 0, 'stl': 1}]}
+1970-01-16 22:38:04.432252: Caching file into: /tmp/nvim1X7C1b/2.dart
+1970-01-16 22:38:04.432414: ExecuteCtagsOnFile called [/tmp/nvim1X7C1b/2.dart]
+1970-01-16 22:38:04.432579: EscapeCtagsCmd called
+1970-01-16 22:38:04.432635: ctags_bin: dart_ctags
+1970-01-16 22:38:04.432688: ctags_args (is a string):  -l 
+1970-01-16 22:38:04.432837: Escaped ctags command: 'dart_ctags'  -l  '/tmp/nvim1X7C1b/2.dart'
+1970-01-16 22:38:04.432906: Executing ctags command: 'dart_ctags'  -l  '/tmp/nvim1X7C1b/2.dart'
+1970-01-16 22:38:04.718481: Executing command: "'/bin/bash' '-c' ''dart_ctags'  -l  '/tmp/nvim1X7C1b/2.dart''"
+1970-01-16 22:38:04.718582: Exit code: 0
+1970-01-16 22:38:04.718728: Ctags executed successfully
+1970-01-16 22:38:04.719147: Filetype tag kinds: ['C', 'D', 'E', 'F', 'L', 'M', 'P', 'U', 'a', 'c', 'd', 'e', 'f', 'g', 'i', 'l', 'm', 'o', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', '?']
+1970-01-16 22:38:04.719206: Parsing ctags output
+1970-01-16 22:38:04.731786: Processing kind: l, number of tags: 1
+1970-01-16 22:38:04.732624: Processing kind: t, number of tags: 0
+1970-01-16 22:38:04.732742: Processing kind: D, number of tags: 0
+1970-01-16 22:38:04.732835: Processing kind: U, number of tags: 0
+1970-01-16 22:38:04.732930: Processing kind: L, number of tags: 0
+1970-01-16 22:38:04.733021: Processing kind: P, number of tags: 4
+1970-01-16 22:38:04.733582: Processing kind: p, number of tags: 0
+1970-01-16 22:38:04.733695: Processing kind: C, number of tags: 0
+1970-01-16 22:38:04.733785: Processing kind: v, number of tags: 0
+1970-01-16 22:38:04.733877: Processing kind: F, number of tags: 1
+1970-01-16 22:38:04.734459: Processing kind: e, number of tags: 0
+1970-01-16 22:38:04.734557: Processing kind: d, number of tags: 0
+1970-01-16 22:38:04.734643: Processing kind: w, number of tags: 0
+1970-01-16 22:38:04.734727: Processing kind: z, number of tags: 0
+1970-01-16 22:38:04.734818: Processing kind: r, number of tags: 0
+1970-01-16 22:38:04.734911: Processing kind: a, number of tags: 0
+1970-01-16 22:38:04.734996: Processing kind: f, number of tags: 0
+1970-01-16 22:38:04.735100: Processing kind: m, number of tags: 0
+1970-01-16 22:38:04.735190: Processing kind: M, number of tags: 0
+1970-01-16 22:38:04.735274: Processing kind: g, number of tags: 0
+1970-01-16 22:38:04.735372: Processing kind: s, number of tags: 0
+1970-01-16 22:38:04.735457: Processing kind: o, number of tags: 0
+1970-01-16 22:38:04.736511: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:04.736963: AutoUpdate finished successfully
+1970-01-16 22:38:05.046443: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.046577: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:05.046634: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.046817: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.047007: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.047390: AutoUpdate finished successfully
+1970-01-16 22:38:05.570742: ToggleWindow called
+1970-01-16 22:38:05.570888: OpenWindow called with flags: ''
+1970-01-16 22:38:05.598728: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/__Tagbar__.1]
+1970-01-16 22:38:05.598832: Still opening window, stopping processing
+1970-01-16 22:38:05.609416: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/__Tagbar__.1]
+1970-01-16 22:38:05.609516: Still opening window, stopping processing
+1970-01-16 22:38:05.610000: InitWindow called with autoclose: 0
+1970-01-16 22:38:05.623675: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/__Tagbar__.1]
+1970-01-16 22:38:05.623794: In Tagbar window, stopping processing
+1970-01-16 22:38:05.626823: Mapping keys
+1970-01-16 22:38:05.628036: InitWindow finished
+1970-01-16 22:38:05.628139: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.628240: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:05.628295: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.628463: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.628583: RenderContent called
+1970-01-16 22:38:05.628732: Redisplaying file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.629036: PrintKinds called
+1970-01-16 22:38:05.629182: Printing kind: l, number of (top-level) tags: 1
+1970-01-16 22:38:05.629478: Printing kind: t, number of (top-level) tags: 0
+1970-01-16 22:38:05.629561: Printing kind: i, number of (top-level) tags: 1
+1970-01-16 22:38:05.629954: Printing kind: D, number of (top-level) tags: 0
+1970-01-16 22:38:05.630084: Printing kind: U, number of (top-level) tags: 0
+1970-01-16 22:38:05.630160: Printing kind: L, number of (top-level) tags: 0
+1970-01-16 22:38:05.630251: Printing kind: P, number of (top-level) tags: 4
+1970-01-16 22:38:05.630757: Printing kind: p, number of (top-level) tags: 0
+1970-01-16 22:38:05.630838: Printing kind: C, number of (top-level) tags: 0
+1970-01-16 22:38:05.630946: Printing kind: v, number of (top-level) tags: 0
+1970-01-16 22:38:05.631032: Printing kind: F, number of (top-level) tags: 1
+1970-01-16 22:38:05.631261: Printing kind: E, number of (top-level) tags: 0
+1970-01-16 22:38:05.631350: Printing kind: e, number of (top-level) tags: 0
+1970-01-16 22:38:05.631420: Printing kind: x, number of (top-level) tags: 0
+1970-01-16 22:38:05.631489: Printing kind: c, number of (top-level) tags: 0
+1970-01-16 22:38:05.631558: Printing kind: d, number of (top-level) tags: 0
+1970-01-16 22:38:05.631625: Printing kind: w, number of (top-level) tags: 0
+1970-01-16 22:38:05.631690: Printing kind: z, number of (top-level) tags: 0
+1970-01-16 22:38:05.631757: Printing kind: r, number of (top-level) tags: 0
+1970-01-16 22:38:05.631822: Printing kind: a, number of (top-level) tags: 0
+1970-01-16 22:38:05.631889: Printing kind: f, number of (top-level) tags: 0
+1970-01-16 22:38:05.631975: Printing kind: m, number of (top-level) tags: 0
+1970-01-16 22:38:05.632085: Printing kind: M, number of (top-level) tags: 0
+1970-01-16 22:38:05.632192: Printing kind: g, number of (top-level) tags: 0
+1970-01-16 22:38:05.632331: Printing kind: s, number of (top-level) tags: 0
+1970-01-16 22:38:05.632462: Printing kind: o, number of (top-level) tags: 0
+1970-01-16 22:38:05.632572: Printing kind: ?, number of (top-level) tags: 0
+1970-01-16 22:38:05.633163: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.633700: Highlight pattern: '/^\%6l\s*[▾▸ ][-+# ]\?\zs\Vimport\m\ze/'
+1970-01-16 22:38:05.655723: AutoUpdate finished successfully
+1970-01-16 22:38:05.656019: RenderContent called
+1970-01-16 22:38:05.656186: Redisplaying file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.656423: PrintKinds called
+1970-01-16 22:38:05.656505: Printing kind: l, number of (top-level) tags: 1
+1970-01-16 22:38:05.656739: Printing kind: t, number of (top-level) tags: 0
+1970-01-16 22:38:05.656812: Printing kind: i, number of (top-level) tags: 1
+1970-01-16 22:38:05.657089: Printing kind: D, number of (top-level) tags: 0
+1970-01-16 22:38:05.657161: Printing kind: U, number of (top-level) tags: 0
+1970-01-16 22:38:05.657231: Printing kind: L, number of (top-level) tags: 0
+1970-01-16 22:38:05.657299: Printing kind: P, number of (top-level) tags: 4
+1970-01-16 22:38:05.657747: Printing kind: p, number of (top-level) tags: 0
+1970-01-16 22:38:05.657821: Printing kind: C, number of (top-level) tags: 0
+1970-01-16 22:38:05.657891: Printing kind: v, number of (top-level) tags: 0
+1970-01-16 22:38:05.657959: Printing kind: F, number of (top-level) tags: 1
+1970-01-16 22:38:05.658174: Printing kind: E, number of (top-level) tags: 0
+1970-01-16 22:38:05.658252: Printing kind: e, number of (top-level) tags: 0
+1970-01-16 22:38:05.658358: Printing kind: x, number of (top-level) tags: 0
+1970-01-16 22:38:05.658442: Printing kind: c, number of (top-level) tags: 0
+1970-01-16 22:38:05.658511: Printing kind: d, number of (top-level) tags: 0
+1970-01-16 22:38:05.658577: Printing kind: w, number of (top-level) tags: 0
+1970-01-16 22:38:05.658646: Printing kind: z, number of (top-level) tags: 0
+1970-01-16 22:38:05.658712: Printing kind: r, number of (top-level) tags: 0
+1970-01-16 22:38:05.658777: Printing kind: a, number of (top-level) tags: 0
+1970-01-16 22:38:05.658840: Printing kind: f, number of (top-level) tags: 0
+1970-01-16 22:38:05.658903: Printing kind: m, number of (top-level) tags: 0
+1970-01-16 22:38:05.658966: Printing kind: M, number of (top-level) tags: 0
+1970-01-16 22:38:05.659029: Printing kind: g, number of (top-level) tags: 0
+1970-01-16 22:38:05.659093: Printing kind: s, number of (top-level) tags: 0
+1970-01-16 22:38:05.659157: Printing kind: o, number of (top-level) tags: 0
+1970-01-16 22:38:05.659219: Printing kind: ?, number of (top-level) tags: 0
+1970-01-16 22:38:05.665789: Highlight pattern: '/^\%6l\s*[▾▸ ][-+# ]\?\zs\Vimport\m\ze/'
+1970-01-16 22:38:05.681553: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.681762: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:05.681852: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.682077: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.682298: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:05.682660: goto_win(): wincmd p, 1
+1970-01-16 22:38:05.682814: goto_win(): 2wincmd w, 1
+1970-01-16 22:38:05.685639: goto_win(): 2wincmd w, 1
+1970-01-16 22:38:05.685776: goto_win(): 1wincmd w, 1
+1970-01-16 22:38:05.685868: AutoUpdate finished successfully
+1970-01-16 22:38:05.686386: OpenWindow finished
+1970-01-16 22:38:05.686484: ToggleWindow finished
+1970-01-16 22:38:07.880517: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:07.881180: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:07.881717: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:07.883142: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:07.884428: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:07.886666: goto_win(): wincmd p, 1
+1970-01-16 22:38:07.887517: goto_win(): 2wincmd w, 1
+1970-01-16 22:38:07.902494: goto_win(): 2wincmd w, 1
+1970-01-16 22:38:07.903006: goto_win(): 1wincmd w, 1
+1970-01-16 22:38:07.903532: AutoUpdate finished successfully
+1970-01-16 22:38:08.096706: ToggleWindow called
+1970-01-16 22:38:08.097188: CloseWindow called
+1970-01-16 22:38:08.097836: goto_win(): 2wincmd w, 0
+1970-01-16 22:38:08.138234: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/__Tagbar__.1]
+1970-01-16 22:38:08.138408: In Tagbar window, stopping processing
+1970-01-16 22:38:08.151945: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.152056: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:08.152111: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.152270: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.152384: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.152613: AutoUpdate finished successfully
+1970-01-16 22:38:08.152783: goto_win(): 1wincmd w, 0
+1970-01-16 22:38:08.152868: CloseWindow finished
+1970-01-16 22:38:08.564798: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.565362: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:38:08.565717: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.566521: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.567117: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:38:08.568695: AutoUpdate finished successfully
+1970-01-16 22:38:18.640706: Closing Tagbar window due to QuitPre event
+1970-01-16 22:38:18.640906: goto_win(): 1wincmd w, 1
+1970-01-16 22:41:43.116638: AutoUpdate called [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:41:43.131102: Vim filetype: 'dart', sanitized filetype: 'dart'
+1970-01-16 22:41:43.131226: Checking if file is valid [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:41:43.131538: File data seems up to date [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:41:43.131784: Setting current file [/mnt/D/flutter_project/dart-ctags/bin/dart_ctags.dart]
+1970-01-16 22:41:43.132143: AutoUpdate finished successfully

@@ -2,16 +2,10 @@ part of declaration_tag;
 
 class KlassTag extends DeclarationTag {
   KlassTag({
-    required TagKind kind,
+    required List<TagItem> itemList,
     required String filePath,
   }) : super(
-          kind: kind,
+          itemList: itemList,
           filePath: filePath,
         );
-
-  @override
-  List<TagItem> loadTagItem() {
-    // TODO: implement loadTagItem
-    throw UnimplementedError();
-  }
 }

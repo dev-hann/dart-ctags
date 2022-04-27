@@ -6,10 +6,15 @@ part 'src/klass_tag.dart';
 
 abstract class DeclarationTag extends Tag {
   DeclarationTag({
-    required TagKind kind,
+    required List<TagItem> itemList,
     required String filePath,
   }) : super(
-          kind: kind,
+          itemList: itemList,
           filePath: filePath,
         );
+
+
+  // static List<DeclarationTag> fromDeclaration(Declaration declaration){
+
+  // }
 }

@@ -1,15 +1,15 @@
 part of dart_ctags;
 
-const _emptyPath = ['.'];
 
 class Options {
   Options({
-    required List<String> filePath,
+    required  this.filePath,
+    required this.lineNumber,
     this.output,
-  }) : filePath = filePath.isNotEmpty ? filePath : _emptyPath;
+  });
   final String? output;
   final List<String> filePath;
-
+  final bool lineNumber;
   Map<String, dynamic> toMap() {
     return {
       'output': output,

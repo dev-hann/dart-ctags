@@ -1,6 +1,5 @@
 library tag;
 
-import 'package:analyzer/dart/ast/ast.dart';
 import 'package:path/path.dart' as path;
 export './directive_tag/directive_tag.dart';
 
@@ -10,19 +9,13 @@ part 'tag_item.dart';
 
 abstract class Tag {
   Tag({
-    required this.kind,
     required this.filePath,
-  }) {
-    itemList.addAll(loadTagItem());
-  }
+    required this.itemList,
+  });
 
-  final TagKind kind;
   final String filePath;
-  final List<TagItem> itemList = [];
-
+  final List<TagItem> itemList;
   String get relativePath => path.relative(filePath, from: '.');
-
-  List<TagItem> loadTagItem();
 
   List<String> toLines() {
     final List<String> _res = [];
@@ -31,11 +24,5 @@ abstract class Tag {
       _res.add(line);
     }
     return _res;
-  }
-
-  static List<Tag> fromUnit(CompilationUnit uni) {
-    final List<Tag> _directiveTagList = [];
-
-    return _directiveTagList;
   }
 }
