@@ -18,63 +18,15 @@ class Tags {
 
   List<String> generate() {
     final _res = [..._tagPreFix];
-    // print(filePath);
     final parseResult = parseFile(
         path: filePath, featureSet: FeatureSet.latestLanguageVersion());
 
     final unit = parseResult.unit;
     final directiveList = unit.directives;
-    print(directiveList);
-    // print(unit.declarations);
-    // final unit = parseResult.unit;
-    // final List<Tag> tagList = <Tag>[];
-    //
-    // final _libTag = _parseLibraryTag(unit);
-    // if (_libTag != null) {
-    //   tagList.add(_libTag);
-    // }
-    //
-    // final _importTags = _parseImport(unit);
-    // if (_importTags.isNotEmpty) {
-    //   tagList.addAll(_importTags);
-    // }
+    final list = DirectiveTag.fromDirective(directiveList, filePath);
+    list.forEach((element) {
+      print(element.toLines());
+    });
     return _tagPreFix;
-  }
-
-  List<T> directiveList<T>(CompilationUnit unit) {
-    return unit.directives.whereType<T>().toList();
-  }
-
-  String replaceAllQuotes(String traget) {
-    return traget.replaceAll("'", "").replaceAll('"', "");
-  }
-
-  bool checkContainType<T>(CompilationUnit unit) {
-    final _list = directiveList<T>(unit);
-    return _list.isNotEmpty;
-  }
-
-  // LibraryTag? _parseLibraryTag(CompilationUnit unit) {
-  //   final _list = directiveList<LibraryDirective>(unit);
-  //   if (_list.isEmpty) return null;
-  // }
-
-  List<Tag> _parseImport(CompilationUnit unit) {
-    final List<Tag> _res = <Tag>[];
-
-    // final _list = directiveList<ImportDirective>(unit);
-    // if (_list.isNotEmpty) {
-    //   _res.add(ImportTag.headLine(unit));
-    //   for (final d in _list) {
-    //     final entity = d.childEntities.map((e) => e.toString()).toList();
-    //     final tmpTag = ImportTag(
-    //       nameEntity: entity,
-    //       path: '.',
-    //     );
-    //     _res.add(tmpTag);
-    //   }
-    // }
-
-    return _res;
   }
 }

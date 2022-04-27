@@ -3,16 +3,21 @@ part of tag;
 abstract class TagItem {
   TagItem({
     required this.name,
-    required this.path,
-    required this.seperator,
+    required this.filePath,
+    required this.separator,
     required this.kind,
     required this.type,
   });
+
   final String name;
-  final String path;
-  final String seperator;
+  final String filePath;
+  final String separator;
   final TagKind kind;
   final String type;
 
-  String toLine();
+  List<String> get componentList;
+
+  String toLine() {
+    return componentList.join("\t");
+  }
 }

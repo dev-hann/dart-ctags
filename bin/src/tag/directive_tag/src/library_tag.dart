@@ -1,13 +1,19 @@
 part of directive_tag;
 
-class LibraryTag extends DirectiveTag{
-  LibraryTag(
+class LibraryTag extends DirectiveTag {
+  LibraryTag({
+    required this.nameList,
+    required String filePath,
+  }) : super(
+          kind: TagKind.library,
+          filePath: filePath,
+        );
 
-      ) : super(kind: TagKind.library);
+  final List<String> nameList;
 
   @override
-  void initItemList() {
-
+  List<TagItem> loadTagItem() {
+    final _name = replaceAllQuotes(nameList[1]);
+    return [LibraryTagItem(_name, relativePath)];
   }
-
 }
