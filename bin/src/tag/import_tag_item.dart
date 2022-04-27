@@ -13,4 +13,9 @@ class ImportTagItem extends TagItem {
           kind: kind,
           type: "directive:import",
         );
+
+  @override
+  String toLine() {
+    return "";
+  }
 }

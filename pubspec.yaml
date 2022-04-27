@@ -7,11 +7,10 @@ environment:
   sdk: '>=2.16.2 <3.0.0'
 
 
-# dependencies:
-#   path: ^1.8.0
-
 dev_dependencies:
   lints: ^1.0.0
-dependencies: 
+  test:
+dependencies:
   args: ^2.3.0
   analyzer: ^4.0.0
+  path:

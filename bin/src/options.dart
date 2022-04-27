@@ -4,7 +4,7 @@ class Options {
   const Options({
     required this.filePath,
     String? output,
-  }) : output = output ?? "./tags";
+  }) : output = output ?? "./tag";
   final String output;
   final List<String> filePath;
 
