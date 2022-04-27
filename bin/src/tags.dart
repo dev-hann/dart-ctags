@@ -12,13 +12,24 @@ class Tags {
       '!_TAG_FILE_SORTED\t1\t/0=unsorted, 1=sorted, 2=foldcase/'
     ];
     // print(filePath);
-    final tmpRes = parseFile(
+    final parseResult = parseFile(
         path: filePath, featureSet: FeatureSet.latestLanguageVersion());
-    // final importList = _parseImport(tmpRes.unit);
-    // importList.forEach(print);
+    final unit = parseResult.unit;
+    final List<Tag> tagList = <Tag>[];
 
-    final libTag = _parseLibraryTag(tmpRes.unit);
-    print(libTag!.toLineTag());
+    final _libTag = _parseLibraryTag(unit);
+    if (_libTag != null) {
+      tagList.add(_libTag);
+    }
+    
+    final _importTags = _parseImport(unit);
+    if(_importTags.isNotEmpty){
+      tagList.addAll(_importTags);
+    }
+    
+    tagList.forEach((e){
+      print(e.toLineTag());
+    });
 
     return _res;
   }
@@ -31,6 +42,11 @@ class Tags {
     return traget.replaceAll("'", "").replaceAll('"', "");
   }
 
+  bool checkContainType<T>(CompilationUnit unit) {
+    final _list = directiveList<T>(unit);
+    return _list.isNotEmpty;
+  }
+
   LibraryTag? _parseLibraryTag(CompilationUnit unit) {
     final _list = directiveList<LibraryDirective>(unit);
     if (_list.isEmpty) return null;
@@ -41,46 +57,22 @@ class Tags {
     );
   }
 
-  List<String> _importHeader() {
-    return [
-      'import',
-      path.relative(filePath, from: '.'),
-      '/import/;"',
-      'i',
-      'type:directives',
-    ];
-  }
+  List<Tag> _parseImport(CompilationUnit unit) {
+    final List<Tag> _res = <Tag>[];
 
-  List<List<String>> _parseImport(CompilationUnit unit) {
-    final _res = <List<String>>[];
-    final list = unit.directives.whereType<ImportDirective>().toList();
-    if (list.isNotEmpty) {
-      _res.add(_importHeader());
-    }
-    for (final d in list) {
-      String tag = "L";
-      final entity = d.childEntities
-          .where((e) {
-            final str = e.toString();
-            return str != "import" && str != ";";
-          })
-          .join(" ")
-          .replaceAll("'", "")
-          .replaceAll('"', "");
-      if (entity.contains("dart:")) {
-        tag = "D";
-      } else if (entity.contains("package:")) {
-        tag = "U";
+    final _list = directiveList<ImportDirective>(unit);
+    if (_list.isNotEmpty) {
+      _res.add(ImportTag.headLine(unit));
+      for (final d in _list) {
+        final entity = d.childEntities.map((e) => e.toString()).toList();
+        final tmpTag = ImportTag(
+          nameEntity: entity,
+          path: '.',
+        );
+        _res.add(tmpTag);
       }
-      final _tmpLine = [
-        entity,
-        path.relative(filePath, from: '.'),
-        '/^;"',
-        tag,
-        'directive:import',
-      ];
-      _res.add(_tmpLine);
     }
+
     return _res;
   }
 }

@@ -17,10 +17,14 @@ abstract class Tag {
   final List<String> nameEntity;
   String get filter;
   String get name {
-    return nameEntity.where((e) {
-      final str = e.toString();
-      return str != filter && str != ";";
+    final _res = nameEntity.where((e) {
+      return e != filter && e != ";";
     }).join(" ");
+    return _replaceAllQuotes(_res);
+  }
+
+  String _replaceAllQuotes(String traget) {
+    return traget.replaceAll("'", "").replaceAll('"', "");
   }
 
   final String path;
@@ -30,5 +34,21 @@ abstract class Tag {
 
   String toLineTag() {
     return '$name\t$path\t$sperator\t${kind.short()}\t$type';
+  }
+
+  factory Tag.fromUnit(Directive directive) {
+    final entity = directive.childEntities.map((e) => e.toString()).toList();
+    if (directive is LibraryDirective) {
+      return LibraryTag(
+        nameEntity: entity,
+        path: '.',
+      );
+    } else if (directive is ImportDirective) {
+      return ImportTag(
+        nameEntity: entity,
+        path: '.',
+      );
+    }
+    throw Exception("No Type of Directive tag => $directive");
   }
 }
