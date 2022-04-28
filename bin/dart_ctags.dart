@@ -4,9 +4,11 @@ import 'dart:io';
 
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
+import 'package:analyzer/dart/ast/ast.dart';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as path;
 
+import 'src/tag/declaration_tag/declaration_tag.dart';
 import 'src/tag/tag.dart';
 
 part 'src/arguments.dart';
@@ -41,4 +43,8 @@ void main(List<String> arguments) async {
     }
   }
   print(lines.join("\n"));
+}
+
+class TestKlass{
+
 }

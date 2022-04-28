@@ -34,19 +34,14 @@ class Tags {
       _res.add(tag.toLines().join("\n"));
     }
 
-    final declarationList = unit.declarations;
-    for (var element in declarationList) {
-      print(element.declaredElement);
+    final declarationTagList = DeclarationTag.fromDeclaration(
+      unit.declarations,
+      relativePath,
+      lineNumber ? unit.lineInfo : null,
+    );
+    for (final tag in declarationTagList) {
+      _res.add(tag);
     }
-    // final declarationList = unit.declarations;
-    // declarationList.forEach((element) {
-    //   if(element is ClassDeclaration){
-    //     ClassDeclaration _de = element;
-    //     print(_de.members);
-    //     print(_de.extendsClause);
-    //     print(_de.implementsClause);
-    //   }
-    // });
     return [];
     return _res;
   }
