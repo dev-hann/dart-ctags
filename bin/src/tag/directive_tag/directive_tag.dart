@@ -4,10 +4,6 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/source/line_info.dart';
 
 import '../tag.dart';
-import 'src/import_tag_item.dart';
-import 'src/library_tag_item.dart';
-import 'src/part_of_tag_item.dart';
-import 'src/part_tag_item.dart';
 
 part 'src/import_tag.dart';
 
@@ -19,12 +15,36 @@ part 'src/part_tag.dart';
 
 abstract class DirectiveTag extends Tag {
   DirectiveTag({
-    required List<TagItem> itemList,
+    required String name,
     required String filePath,
+    required int? lineNumber,
+    required TagKind kind,
+    String? directive,
   }) : super(
+          name: name,
           filePath: filePath,
-          itemList: itemList,
+          lineNumber: lineNumber,
+          address: '/^;"',
+          kind: kind,
+          directive: directive,
         );
+
+  @override
+  String get toLine {
+    final _res = [
+      name,
+      filePath,
+      address,
+      kind.toValue(),
+      lineNumberText,
+    ];
+
+
+    if (directive != null) {
+      _res.add("directive:$directive");
+    }
+    return _res.join("\t");
+  }
 
   static List<DirectiveTag> fromDirective(
     List<Directive> directiveList,
@@ -38,7 +58,7 @@ abstract class DirectiveTag extends Tag {
     if (libList.isNotEmpty) {
       final lib = directiveList.first;
       final _tag = LibraryTag(
-        name: lib.childEntities.map((e) => e.toString()).toList(),
+        name: lib.childEntities.join(""),
         filePath: filePath,
         lineNumber: Tag.getLineNumber(lineInfo, lib.offset),
       );
@@ -48,51 +68,39 @@ abstract class DirectiveTag extends Tag {
     /// Import
     final impList = Tag.typeList<ImportDirective>(directiveList);
     if (impList.isNotEmpty) {
-      final itemList = <ImportTagItem>[];
-
       for (final d in impList) {
-        final item = ImportTagItem(
-          name: d.childEntities.map((e) => e.toString()).toList(),
+        final _tag = ImportTag(
+          name: d.childEntities.join(""),
           filePath: filePath,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
         );
-        itemList.add(item);
+        _res.add(_tag);
       }
-
-      final _tag = ImportTag(itemList: itemList, filePath: filePath);
-      _res.add(_tag);
     }
 
     /// Part
     final partList = Tag.typeList<PartDirective>(directiveList);
     if (partList.isNotEmpty) {
-      final itemList = <PartTagItem>[];
       for (final d in partList) {
-        final item = PartTagItem(
-          name: d.childEntities.map((e) => e.toString()).toList(),
+        final _tag = PartTag(
+          name: d.childEntities.join(""),
           filePath: filePath,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
         );
-        itemList.add(item);
+        _res.add(_tag);
       }
-      final _tag = PartTag(itemList: itemList, filePath: filePath);
-      _res.add(_tag);
     }
 
     /// part of
     final partOfList = Tag.typeList<PartOfDirective>(directiveList);
     if (partOfList.isNotEmpty) {
-      final itemList = <PartOfTagItem>[];
       for (final d in partOfList) {
-        final item = PartOfTagItem(
-          name: d.childEntities.map((e) => e.toString()).toList(),
-          filePath: filePath,
-          lineNumber: Tag.getLineNumber(lineInfo, d.offset),
-        );
-        itemList.add(item);
+        final _tag = PartOfTag(
+            name: d.childEntities.join(""),
+            filePath: filePath,
+            lineNumber: Tag.getLineNumber(lineInfo, d.offset));
+        _res.add(_tag);
       }
-      final _tag = PartOfTag(itemList: itemList, filePath: filePath);
-      _res.add(_tag);
     }
     return _res;
   }

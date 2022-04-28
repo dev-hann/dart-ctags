@@ -2,16 +2,22 @@ part of declaration_tag;
 
 class KlassTag extends DeclarationTag {
   KlassTag({
-    required List<TagItem> itemList,
+    required String name,
     required String filePath,
-    required this.isAbstract,
+    required bool isAbstract,
+    required int? lineNumber,
+    required String extend,
+    required String implement,
+    required String withs,
   }) : super(
-          itemList: itemList,
+          name: name,
           filePath: filePath,
+          lineNumber: lineNumber,
+          address: '/^;"',
+          kind: TagKind.classes,
+          type: (isAbstract ? "Abstract class" : "class") +
+              (extend ?? "") +
+              (implement ?? "") +
+              (withs ?? ""),
         );
-
-  final bool isAbstract;
-
-
-    
 }

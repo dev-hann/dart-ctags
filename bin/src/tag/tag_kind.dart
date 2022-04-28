@@ -59,7 +59,7 @@ const _value = <String>[
 ];
 
 extension TagKindValue on TagKind {
-  String short() {
+  String toValue() {
     final index = TagKind.values.indexWhere((e) => e == this);
     if (index == -1) {
       throw Exception("None Value Kind $this");

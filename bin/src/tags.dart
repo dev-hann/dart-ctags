@@ -17,6 +17,7 @@ class Tags {
   final String filePath;
   final String output = '.';
   final bool lineNumber;
+
   String get relativePath => path.relative(filePath, from: output);
 
   List<String> generate() {
@@ -31,7 +32,7 @@ class Tags {
     );
 
     for (final tag in directiveTagList) {
-      _res.add(tag.toLines().join("\n"));
+      _res.add(tag.toLine);
     }
 
     final declarationTagList = DeclarationTag.fromDeclaration(
@@ -40,9 +41,8 @@ class Tags {
       lineNumber ? unit.lineInfo : null,
     );
     for (final tag in declarationTagList) {
-      _res.add(tag.toLines().join("\n"));
+      _res.add(tag.toLine);
     }
-    // return [];
     return _res;
   }
 }

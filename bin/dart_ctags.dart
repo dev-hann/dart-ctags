@@ -23,7 +23,7 @@ void main(List<String> arguments) async {
   final Arguments _arg = Arguments();
   final opts = _arg.run(arguments);
   if (opts == null) return;
-  
+
   final lines = <String>[...tagPrefix];
   for (final _path in opts.filePath) {
     final type = await FileSystemEntity.type(_path);
@@ -33,7 +33,7 @@ void main(List<String> arguments) async {
           .toList();
       for (final file in fileList.toList()) {
         if (path.extension(file.path) == '.dart') {
-          final Tags _tags = Tags(file.path,opts.lineNumber);
+          final Tags _tags = Tags(file.path, opts.lineNumber);
           lines.addAll(_tags.generate());
         }
       }
@@ -45,6 +45,22 @@ void main(List<String> arguments) async {
   print(lines.join("\n"));
 }
 
-class TestKlass{
-  final String Hello ="hello";
-}
+// String _main2(String aaa, dynamic xxx, {required String value}) {
+//   return "";
+// }
+//
+// String _main3(String aaa, dynamic xxx, [String value = "xxx"]) {
+//   return "";
+// }
+
+class A {}
+
+class B {}
+
+class C {}
+
+class AB implements A {}
+
+class ABA extends A implements B {}
+
+class ABC extends A implements B {}

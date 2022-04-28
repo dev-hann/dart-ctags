@@ -10,12 +10,36 @@ part 'tag_item.dart';
 
 abstract class Tag {
   Tag({
+    required String name,
     required this.filePath,
-    required this.itemList,
-  });
+    required this.lineNumber,
+    required this.address,
+    required this.kind,
+    this.directive,
+  }) : _name = name;
 
+  final String _name;
   final String filePath;
-  final List<TagItem> itemList;
+  final int? lineNumber;
+  final String? directive;
+
+  String get lineNumberText {
+    if (lineNumber == null) return "";
+    return "line:$lineNumber";
+  }
+
+  String get name {
+    final _blackList = [...kind.blackList(), "'", '"', ";"];
+    String _res = _name;
+    for (final b in _blackList) {
+      _res = _res.replaceAll(b, "");
+    }
+    return _res;
+  }
+
+  final String address;
+  final TagKind kind;
+
   String get relativePath => path.relative(filePath, from: '.');
 
   static List<T> typeList<T>(List list) {
@@ -27,12 +51,5 @@ abstract class Tag {
     return info.getLocation(offset).lineNumber;
   }
 
-  List<String> toLines() {
-    final List<String> _res = [];
-    for (final item in itemList) {
-      final line = item.toLine();
-      _res.add(line);
-    }
-    return _res;
-  }
+  String get toLine;
 }

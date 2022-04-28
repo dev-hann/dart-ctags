@@ -1,0 +1,1 @@
+dart compile exe dart_ctags.dart
