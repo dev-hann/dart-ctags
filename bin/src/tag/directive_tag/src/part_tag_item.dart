@@ -4,14 +4,14 @@ class PartTagItem extends TagItem {
   PartTagItem({
     required List<String> name,
     required String filePath,
-    required int?lineNumber,
+    required int? lineNumber,
   }) : super(
           name: name,
           filePath: filePath,
           separator: '/^;"',
           kind: TagKind.part,
           type: "null",
-          lineNumber: lineNumber
+          lineNumber: lineNumber,
         );
 
   @override

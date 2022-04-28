@@ -16,18 +16,7 @@ class ImportTagItem extends TagItem {
           lineNumber: lineNumber,
         );
 
-  factory ImportTagItem.haedLine({
-    required String filePath,
-  }) {
-    return ImportTagItem(
-      name: ["imports"],
-      filePath: filePath,
-      separator: '/import/;"',
-      type: "type:directives",
-    );
-  }
   static TagKind _importTagKind(List<String> list) {
-    if (list.length == 1 && list.first == "imports") return TagKind.imports;
     final _name = list[1];
     if (_name.contains("dart:")) return TagKind.dart;
     if (_name.contains("package:")) return TagKind.pub;

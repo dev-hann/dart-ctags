@@ -24,6 +24,7 @@ abstract class TagItem {
   final TagKind kind;
   final String type;
   final int? lineNumber;
+
   String get lineNumberText {
     if (lineNumber == null) {
       return "";

@@ -25,8 +25,13 @@ abstract class DeclarationTag extends Tag {
     final _res = <DeclarationTag>[];
     final klassList = Tag.typeList<ClassDeclaration>(declarations);
     if (klassList.isNotEmpty) {
-      for(final d in klassList){
-
+      for (final d in klassList) {
+        // print(d.name);
+        // final _tag = KlassTag(
+        //   itemList: itemList,
+        //   filePath: filePath,
+        //   isAbstract: d.isAbstract,
+        // );
       }
     }
 

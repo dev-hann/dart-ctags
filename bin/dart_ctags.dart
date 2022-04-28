@@ -46,5 +46,5 @@ void main(List<String> arguments) async {
 }
 
 class TestKlass{
-
+  final String Hello ="hello";
 }

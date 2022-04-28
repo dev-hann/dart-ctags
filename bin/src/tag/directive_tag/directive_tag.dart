@@ -32,6 +32,8 @@ abstract class DirectiveTag extends Tag {
     LineInfo? lineInfo,
   ) {
     final List<DirectiveTag> _res = [];
+
+    /// Library
     final libList = Tag.typeList<LibraryDirective>(directiveList);
     if (libList.isNotEmpty) {
       final lib = directiveList.first;
@@ -43,6 +45,7 @@ abstract class DirectiveTag extends Tag {
       _res.add(_tag);
     }
 
+    /// Import
     final impList = Tag.typeList<ImportDirective>(directiveList);
     if (impList.isNotEmpty) {
       final itemList = <ImportTagItem>[];
@@ -60,6 +63,7 @@ abstract class DirectiveTag extends Tag {
       _res.add(_tag);
     }
 
+    /// Part
     final partList = Tag.typeList<PartDirective>(directiveList);
     if (partList.isNotEmpty) {
       final itemList = <PartTagItem>[];
@@ -75,6 +79,7 @@ abstract class DirectiveTag extends Tag {
       _res.add(_tag);
     }
 
+    /// part of
     final partOfList = Tag.typeList<PartOfDirective>(directiveList);
     if (partOfList.isNotEmpty) {
       final itemList = <PartOfTagItem>[];

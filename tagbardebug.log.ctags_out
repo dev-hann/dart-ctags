@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	{yoehwan}	/{yoehwan@gmail.com}/
+!_TAG_PROGRAM_NAME {dart-ctags}
+!_TAG_PROGRAM_URL {https://github.com/yoehwan/dart-ctags}
+dart_ctags	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	l	line:1	null
+imports	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/import/;"	i		type:directives
+dart:io	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	D	line:3	directive:imports
+package:analyzer/dart/analysis/features.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	U	line:5	directive:imports
+package:analyzer/dart/analysis/utilities.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	U	line:6	directive:imports
+package:analyzer/dart/ast/ast.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	U	line:7	directive:imports
+package:args/args.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	U	line:8	directive:imports
+package:path/path.dart as path	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	U	line:9	directive:imports
+src/tag/declaration_tag/declaration_tag.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	L	line:11	directive:imports
+src/tag/tag.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	L	line:12	directive:imports
+src/arguments.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	P	line:14	null
+src/enums.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	P	line:16	null
+src/tags.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	P	line:18	null
+src/options.dart	C:\Users\han\AppData\Local\Temp\nvimCdobBG\1.dart	/^;"	P	line:20	null

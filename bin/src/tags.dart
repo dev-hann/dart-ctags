@@ -42,7 +42,7 @@ class Tags {
     for (final tag in declarationTagList) {
       _res.add(tag.toLines().join("\n"));
     }
-    return [];
+    // return [];
     return _res;
   }
 }
