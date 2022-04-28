@@ -40,7 +40,7 @@ class Tags {
       lineNumber ? unit.lineInfo : null,
     );
     for (final tag in declarationTagList) {
-      _res.add(tag);
+      _res.add(tag.toLines().join("\n"));
     }
     return [];
     return _res;

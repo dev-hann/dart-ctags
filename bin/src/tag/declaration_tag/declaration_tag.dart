@@ -17,13 +17,19 @@ abstract class DeclarationTag extends Tag {
           filePath: filePath,
         );
 
-  static fromDeclaration(
+  static List<DeclarationTag> fromDeclaration(
     NodeList<CompilationUnitMember> declarations,
     String relativePath,
     LineInfo? lineInfo,
   ) {
-    for (final d in declarations) {
-      print(d);
+    final _res = <DeclarationTag>[];
+    final klassList = Tag.typeList<ClassDeclaration>(declarations);
+    if (klassList.isNotEmpty) {
+      for(final d in klassList){
+
+      }
     }
+
+    return _res;
   }
 }
