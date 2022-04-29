@@ -5,8 +5,6 @@ export './directive_tag/directive_tag.dart';
 
 part 'tag_kind.dart';
 
-part 'tag_item.dart';
-
 abstract class Tag {
   Tag({
     required String name,
@@ -58,6 +56,15 @@ abstract class Tag {
   static int? getLineNumber(LineInfo? info, int offset) {
     if (info == null) return null;
     return info.getLocation(offset).lineNumber;
+  }
+
+  static String join(List<String?> list) {
+    String _res = "";
+    for (final item in list) {
+      if (item == null) continue;
+      _res += ' $item';
+    }
+    return _res.trim().replaceAll("  ", " ");
   }
 
   List<String> get tagComponent;

@@ -13,10 +13,9 @@ class FieldTag extends DeclarationTag {
           filePath: filePath,
           lineNumber: lineNumber,
           address: '/^;"',
-          kind: TagKind.methods,
+          kind: TagKind.variables,
           isAbstract: false,
-          type: (keyword ?? "") + (type ?? "dynamic"),
-          // typeList: [(keyword ?? "") + (type ?? "dynamic")],
+          type: Tag.join([keyword,(type ?? "dynamic")]),
           klass: klass,
         );
 }

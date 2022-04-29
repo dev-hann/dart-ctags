@@ -9,10 +9,10 @@ class MethodTag extends DeclarationTag {
     required bool isAbstract,
     required bool isGetter,
     required bool isSetter,
-    required String parameters,
+    required String? parameters,
     required String? klass,
     TagKind? kind,
-  })  : _signature = parameters,
+  })  : _parameters = parameters,
         super(
           name: name,
           filePath: filePath,
@@ -21,14 +21,22 @@ class MethodTag extends DeclarationTag {
           isAbstract: isAbstract,
           kind: kind ?? TagKind.methods,
           klass: klass,
-          type: type??"void",
-          // typeList: [
-          //   isGetter ? "get" : "",
-          //   isSetter ? "set" : "",
-          //   type ?? "void"
-          // ],
+          type: Tag.join([
+            (isGetter ? "get" : ""),
+            (isSetter ? "set" : ""),
+            (type ?? "void")
+          ]),
         );
-  final String _signature;
+  final String? _parameters;
 
-  String get signature => "signature:$_signature";
+  String get parametersText => "signature:$_parameters";
+
+  @override
+  List<String> get tagComponent {
+    final _res = super.tagComponent;
+    if (_parameters != null) {
+      _res.add(parametersText);
+    }
+    return _res;
+  }
 }

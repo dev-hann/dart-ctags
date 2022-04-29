@@ -43,7 +43,6 @@ class Tags {
     for (final tag in declarationTagList) {
       _res.add(tag.toTag);
     }
-    // return [];
     return _res;
   }
 }

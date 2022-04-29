@@ -53,7 +53,7 @@ abstract class DeclarationTag extends Tag {
   String get typeText {
     String _type = type!;
     if (isAbstract) {
-      _type = "Abstract $_type";
+      _type = Tag.join(["Abstract", _type]);
     }
     return "type:$_type";
   }
@@ -140,22 +140,24 @@ abstract class DeclarationTag extends Tag {
         final memberList = d.members;
 
         /// Field
-        // final fieldList = Tag.whereTypeList<FieldDeclaration>(memberList);
-        // if (fieldList.isNotEmpty) {
-        // for (final field in fieldList) {
-        // final _f = field.fields;
-        // final _type = _f.type?.toString();
-        // final _keyword = _f.keyword?.toString();
-        // final _name = _f.variables.map((e) => e.name.name).join("");
-        // final _tag = FieldTag(
-        // name: _name,
-        // filePath: relativePath,
-        // lineNumber: Tag.getLineNumber(lineInfo, field.offset),
-        // keyword: _keyword,
-        // type: _type,
-        // );
-        // _res.add(_tag);
-        // }
+        final fieldList = Tag.whereTypeList<FieldDeclaration>(memberList);
+        if (fieldList.isNotEmpty) {
+          for (final field in fieldList) {
+            final _f = field.fields;
+            final _type = _f.type?.toString();
+            final _keyword = _f.keyword?.toString();
+            final _name = _f.variables.map((e) => e.name.name).join("");
+            final _tag = FieldTag(
+              name: _name,
+              filePath: relativePath,
+              lineNumber: Tag.getLineNumber(lineInfo, field.offset),
+              keyword: _keyword,
+              type: _type,
+              klass: _className,
+            );
+            _res.add(_tag);
+          }
+        }
 
         /// Method
         final methodList = Tag.whereTypeList<MethodDeclaration>(memberList);
@@ -169,7 +171,7 @@ abstract class DeclarationTag extends Tag {
               isAbstract: m.isAbstract,
               isGetter: m.isGetter,
               isSetter: m.isSetter,
-              parameters: m.parameters.toString(),
+              parameters: m.parameters?.toString(),
               klass: _className,
             );
             _res.add(_tag);

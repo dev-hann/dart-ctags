@@ -22,6 +22,7 @@ class KlassTag extends DeclarationTag {
           showAccess: showAccess ?? true,
         );
 
+  /// TODO: scope extends ,implement, with.
   factory KlassTag.extend({
     required String name,
     required String filePath,
