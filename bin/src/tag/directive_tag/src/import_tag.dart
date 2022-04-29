@@ -1,6 +1,6 @@
 part of directive_tag;
 
-class ImportTag extends DirectiveTag {
+class ImportTag extends DirectiveTag with MemberTagMixin {
   ImportTag({
     required String name,
     required String filePath,
@@ -9,13 +9,18 @@ class ImportTag extends DirectiveTag {
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
-          kind: _importTagKind(name),
-          directive: "import",
+          kind: importTagKind(name),
         );
 
-  static TagKind _importTagKind(String name) {
+  static TagKind importTagKind(String name) {
     if (name.contains("dart:")) return TagKind.dart;
     if (name.contains("package:")) return TagKind.pub;
     return TagKind.local;
   }
+
+  @override
+  TagScopeKind get memberTag => TagScopeKind.directive;
+
+  @override
+  String get memberName => "import";
 }

@@ -1,6 +1,6 @@
 part of declaration_tag;
 
-class MethodTag extends DeclarationTag {
+abstract class MethodTag extends DeclarationTag {
   MethodTag({
     required String name,
     required String filePath,
@@ -10,17 +10,14 @@ class MethodTag extends DeclarationTag {
     required bool isGetter,
     required bool isSetter,
     required String? parameters,
-    required String? klass,
     TagKind? kind,
   })  : _parameters = parameters,
         super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
-          address: '/^;"',
           isAbstract: isAbstract,
           kind: kind ?? TagKind.methods,
-          klass: klass,
           type: Tag.join([
             (isGetter ? "get" : ""),
             (isSetter ? "set" : ""),
@@ -39,4 +36,34 @@ class MethodTag extends DeclarationTag {
     }
     return _res;
   }
+}
+
+class KlassMethodTag extends MethodTag with MemberTagMixin {
+  KlassMethodTag({
+    required String name,
+    required String filePath,
+    required int? lineNumber,
+    required String? type,
+    required bool isAbstract,
+    required bool isGetter,
+    required bool isSetter,
+    required String? parameters,
+    required this.klassName,
+  }) : super(
+          name: name,
+          filePath: filePath,
+          lineNumber: lineNumber,
+          isAbstract: isAbstract,
+          isGetter: isGetter,
+          isSetter: isSetter,
+          parameters: parameters,
+          type: type,
+        );
+  final String klassName;
+
+  @override
+  String get memberName => klassName;
+
+  @override
+  TagScopeKind get memberTag => TagScopeKind.klass;
 }

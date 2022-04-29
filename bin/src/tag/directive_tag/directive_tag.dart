@@ -13,37 +13,18 @@ part 'src/part_of_tag.dart';
 
 part 'src/part_tag.dart';
 
-abstract class DirectiveTag extends Tag {
+abstract class DirectiveTag extends Tag with NameFilterMixin {
   DirectiveTag({
     required String name,
     required String filePath,
     required int? lineNumber,
     required TagKind kind,
-    String? directive,
   }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
-          address: '/^;"',
           kind: kind,
-          directive: directive,
         );
-
-  @override
-  List<String> get tagComponent {
-    final _res = [
-      name,
-      filePath,
-      address,
-      kind.toValue(),
-      lineNumberText,
-    ];
-
-    if (directive != null) {
-      _res.add(directiveText!);
-    }
-    return _res;
-  }
 
   static List<DirectiveTag> fromDirective(
     List<Directive> directiveList,
@@ -69,7 +50,7 @@ abstract class DirectiveTag extends Tag {
     if (impList.isNotEmpty) {
       for (final d in impList) {
         final _tag = ImportTag(
-          name: d.childEntities.join(""),
+          name: d.childEntities.join(" "),
           filePath: filePath,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
         );

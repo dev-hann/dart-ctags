@@ -5,27 +5,49 @@ export './directive_tag/directive_tag.dart';
 
 part 'tag_kind.dart';
 
-abstract class Tag {
-  Tag({
-    required String name,
-    required this.filePath,
-    required this.lineNumber,
-    required this.address,
-    required this.kind,
-    this.directive,
-  }) : _name = name;
+part 'tag_scope_kind.dart';
 
-  /// Name
-  final String _name;
+part 'extension/short_cut.dart';
 
-  String get name {
+/// for Contain kinds of [TagKind].
+/// e.g. import [pub,dart,local] or class [variables,method]..
+/// -{memberName}: {memberTag}
+mixin MemberTagMixin on Tag {
+  TagScopeKind get memberTag;
+
+  String get memberName;
+
+  String get childText => '${memberTag.toValue()}:$memberName';
+
+  @override
+  List<String> get tagComponent => super.tagComponent..add(childText);
+}
+
+mixin NameFilterMixin on Tag {
+  String get filteredName {
     final _blackList = [...kind.blackList(), "'", '"', ";"];
-    String _res = _name;
+    String _res = name;
     for (final b in _blackList) {
       _res = _res.replaceAll(b, "");
     }
-    return _res;
+    return _res.trim();
   }
+
+  @override
+  List<String> get tagComponent => super.tagComponent..[0] = filteredName;
+}
+
+/// {name}{signature}: {type}
+abstract class Tag {
+  Tag({
+    required this.name,
+    required this.filePath,
+    required this.lineNumber,
+    required this.kind,
+  });
+
+  /// Name
+  final String name;
 
   final String filePath;
 
@@ -37,17 +59,16 @@ abstract class Tag {
     return "line:$lineNumber";
   }
 
-  /// Directive
-  final String? directive;
-
-  String? get directiveText {
-    if (directive == null) return null;
-    return "directive:$directive";
-  }
-
-  final String address;
+  final String _address = '/^;"';
 
   final TagKind kind;
+
+  List<String> get tagComponent =>
+      [name, filePath, _address, kind.toValue(), lineNumberText];
+
+  String get toLine {
+    return tagComponent.join("\t");
+  }
 
   static List<T> whereTypeList<T>(List list) {
     return list.whereType<T>().toList();
@@ -65,11 +86,5 @@ abstract class Tag {
       _res += ' $item';
     }
     return _res.trim().replaceAll("  ", " ");
-  }
-
-  List<String> get tagComponent;
-
-  String get toTag {
-    return tagComponent.join("\t");
   }
 }

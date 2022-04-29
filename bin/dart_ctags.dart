@@ -12,8 +12,6 @@ import 'src/tag/tag.dart';
 
 part 'src/arguments.dart';
 
-part 'src/enums.dart';
-
 part 'src/tags.dart';
 
 part 'src/options.dart';
@@ -23,7 +21,9 @@ void main(List<String> arguments) async {
   final opts = _arg.run(arguments);
   if (opts == null) return;
 
-  final lines = <String>[...tagPrefix];
+  final tagLineList = <String>[...tagPrefix];
+  final _dartFileList = <String>[];
+
   for (final _path in opts.filePath) {
     final type = await FileSystemEntity.type(_path);
     if (type == FileSystemEntityType.directory) {
@@ -31,15 +31,31 @@ void main(List<String> arguments) async {
           .list(recursive: true, followLinks: true)
           .toList();
       for (final file in fileList.toList()) {
-        if (path.extension(file.path) == '.dart') {
-          final Tags _tags = Tags(file.path, opts.lineNumber);
-          lines.addAll(_tags.generate());
-        }
+        _dartFileList.add(file.path);
       }
     } else if (type == FileSystemEntityType.file) {
-      final Tags _tags = Tags(_path, opts.lineNumber);
-      lines.addAll(_tags.generate());
+      _dartFileList.add(_path);
     }
   }
-  print(lines.join("\n"));
+
+  for (final filePath in _dartFileList) {
+    final Tags _tags = Tags(filePath, opts.lineNumber);
+    tagLineList.addAll(_tags.toLineList());
+  }
+
+  final _res = tagLineList.join("\n");
+  if (opts.output == null) {
+    print(_res);
+  } else {
+    File(opts.output!).writeAsString(_res);
+  }
+}
+
+class A {
+  final int a = 1;
+  final int _a = 2;
+  String b = "";
+  String _b = "";
+  final c = 3;
+  final _c = "";
 }

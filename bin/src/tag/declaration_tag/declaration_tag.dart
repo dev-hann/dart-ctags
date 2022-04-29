@@ -19,24 +19,16 @@ abstract class DeclarationTag extends Tag {
     required String name,
     required String filePath,
     required int? lineNumber,
-    required String address,
     required TagKind kind,
     required this.isAbstract,
-    required this.klass,
     required this.type,
     this.showAccess = true,
   }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
-          address: address,
           kind: kind,
         );
-  final String? klass;
-
-  String get klassText {
-    return "class:$klass";
-  }
 
   final bool showAccess;
 
@@ -48,10 +40,10 @@ abstract class DeclarationTag extends Tag {
   final bool isAbstract;
 
   /// Type
-  final String? type;
+  final String type;
 
   String get typeText {
-    String _type = type!;
+    String _type = type;
     if (isAbstract) {
       _type = Tag.join(["Abstract", _type]);
     }
@@ -60,21 +52,10 @@ abstract class DeclarationTag extends Tag {
 
   @override
   List<String> get tagComponent {
-    final _res = [
-      name,
-      filePath,
-      address,
-      kind.toValue(),
-      lineNumberText,
-    ];
-    if (type != null) {
-      _res.add(typeText);
-    }
+    final _res = super.tagComponent..add(typeText);
+
     if (showAccess) {
       _res.add(accessText);
-    }
-    if (klass != null) {
-      _res.add(klassText);
     }
 
     return _res;
@@ -92,49 +73,17 @@ abstract class DeclarationTag extends Tag {
     if (klassList.isNotEmpty) {
       for (final d in klassList) {
         final _className = d.name.name;
-        final _classLineNumber = Tag.getLineNumber(lineInfo, d.offset);
         final _tag = KlassTag(
           name: _className,
           filePath: relativePath,
           isAbstract: d.isAbstract,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
+          kind: TagKind.classes,
+          extendsName: d.extendsClause?.superclass.toSource(),
+          implementsName: d.implementsClause?.interfaces.join(),
+          withName: d.withClause?.mixinTypes.join(),
         );
         _res.add(_tag);
-        if (d.extendsClause != null) {
-          final name = d.extendsClause!.superclass.name.name;
-          _res.add(
-            KlassTag.extend(
-              klass: _className,
-              name: name,
-              filePath: relativePath,
-              lineNumber: _classLineNumber,
-            ),
-          );
-        }
-
-        if (d.implementsClause != null) {
-          final name = d.implementsClause!.interfaces.join();
-          _res.add(
-            KlassTag.implement(
-              klass: _className,
-              name: name,
-              filePath: relativePath,
-              lineNumber: _classLineNumber,
-            ),
-          );
-        }
-
-        if (d.withClause != null) {
-          final name = d.withClause!.mixinTypes.join();
-          _res.add(
-            KlassTag.withs(
-              klass: _className,
-              name: name,
-              filePath: relativePath,
-              lineNumber: _classLineNumber,
-            ),
-          );
-        }
 
         /// Member
         final memberList = d.members;
@@ -153,7 +102,7 @@ abstract class DeclarationTag extends Tag {
               lineNumber: Tag.getLineNumber(lineInfo, field.offset),
               keyword: _keyword,
               type: _type,
-              klass: _className,
+              klassName: _className
             );
             _res.add(_tag);
           }
@@ -163,7 +112,8 @@ abstract class DeclarationTag extends Tag {
         final methodList = Tag.whereTypeList<MethodDeclaration>(memberList);
         if (memberList.isNotEmpty) {
           for (final m in methodList) {
-            final _tag = MethodTag(
+            print(m.declaredElement);
+            final _tag = KlassMethodTag(
               name: m.name.name,
               filePath: relativePath,
               lineNumber: Tag.getLineNumber(lineInfo, m.offset),
@@ -172,7 +122,7 @@ abstract class DeclarationTag extends Tag {
               isGetter: m.isGetter,
               isSetter: m.isSetter,
               parameters: m.parameters?.toString(),
-              klass: _className,
+              klassName: _className,
             );
             _res.add(_tag);
           }

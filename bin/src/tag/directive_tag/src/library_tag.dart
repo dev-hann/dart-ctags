@@ -1,6 +1,6 @@
 part of directive_tag;
 
-class LibraryTag extends DirectiveTag {
+class LibraryTag extends DirectiveTag with NameFilterMixin {
   LibraryTag({
     required String name,
     required String filePath,

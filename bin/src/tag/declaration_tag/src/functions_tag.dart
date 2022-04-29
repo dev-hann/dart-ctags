@@ -19,6 +19,5 @@ class FunctionsTag extends MethodTag {
           isSetter: isSetter,
           parameters: parameters,
           kind: TagKind.functions,
-          klass: null,
         );
 }

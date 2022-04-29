@@ -15,34 +15,33 @@ class Tags {
   );
 
   final String filePath;
-  final String output = '.';
+  final String root = '.';
   final bool lineNumber;
 
-  String get relativePath => path.relative(filePath, from: output);
 
-  List<String> generate() {
-    final _res = <String>[];
-    final parseResult = parseFile(
+  List<String> toLineList() {
+    if (path.extension(filePath) != ".dart") return [];
+    final tagList = <Tag>[];
+    final _result = parseFile(
         path: filePath, featureSet: FeatureSet.latestLanguageVersion());
-    final unit = parseResult.unit;
+    final unit = _result.unit;
+    final _lineInfo = lineNumber ? unit.lineInfo : null;
+    final _relativePath = path.relative(filePath, from: root);
     final directiveTagList = DirectiveTag.fromDirective(
       unit.directives,
-      relativePath,
-      lineNumber ? unit.lineInfo : null,
+      _relativePath,
+      _lineInfo,
     );
-
-    for (final tag in directiveTagList) {
-      _res.add(tag.toTag);
-    }
+    tagList.addAll(directiveTagList);
 
     final declarationTagList = DeclarationTag.fromDeclaration(
       unit.declarations,
-      relativePath,
-      lineNumber ? unit.lineInfo : null,
+      _relativePath,
+      _lineInfo,
     );
-    for (final tag in declarationTagList) {
-      _res.add(tag.toTag);
-    }
-    return _res;
+
+    tagList.addAll(declarationTagList);
+
+    return tagList.map((e) => e.toLine).toList();
   }
 }
