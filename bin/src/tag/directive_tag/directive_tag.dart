@@ -30,7 +30,7 @@ abstract class DirectiveTag extends Tag {
         );
 
   @override
-  String get toLine {
+  List<String> get tagComponent {
     final _res = [
       name,
       filePath,
@@ -39,11 +39,10 @@ abstract class DirectiveTag extends Tag {
       lineNumberText,
     ];
 
-
     if (directive != null) {
       _res.add("directive:$directive");
     }
-    return _res.join("\t");
+    return _res;
   }
 
   static List<DirectiveTag> fromDirective(
@@ -54,7 +53,7 @@ abstract class DirectiveTag extends Tag {
     final List<DirectiveTag> _res = [];
 
     /// Library
-    final libList = Tag.typeList<LibraryDirective>(directiveList);
+    final libList = Tag.whereTypeList<LibraryDirective>(directiveList);
     if (libList.isNotEmpty) {
       final lib = directiveList.first;
       final _tag = LibraryTag(
@@ -66,7 +65,7 @@ abstract class DirectiveTag extends Tag {
     }
 
     /// Import
-    final impList = Tag.typeList<ImportDirective>(directiveList);
+    final impList = Tag.whereTypeList<ImportDirective>(directiveList);
     if (impList.isNotEmpty) {
       for (final d in impList) {
         final _tag = ImportTag(
@@ -79,7 +78,7 @@ abstract class DirectiveTag extends Tag {
     }
 
     /// Part
-    final partList = Tag.typeList<PartDirective>(directiveList);
+    final partList = Tag.whereTypeList<PartDirective>(directiveList);
     if (partList.isNotEmpty) {
       for (final d in partList) {
         final _tag = PartTag(
@@ -92,7 +91,7 @@ abstract class DirectiveTag extends Tag {
     }
 
     /// part of
-    final partOfList = Tag.typeList<PartOfDirective>(directiveList);
+    final partOfList = Tag.whereTypeList<PartOfDirective>(directiveList);
     if (partOfList.isNotEmpty) {
       for (final d in partOfList) {
         final _tag = PartOfTag(

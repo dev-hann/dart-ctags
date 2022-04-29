@@ -9,6 +9,8 @@ import '../tag.dart';
 part 'src/klass_tag.dart';
 
 part 'src/functions_tag.dart';
+part 'src/field_tag.dart';
+part 'src/method_tag.dart';
 
 abstract class DeclarationTag extends Tag {
   DeclarationTag({
@@ -17,25 +19,26 @@ abstract class DeclarationTag extends Tag {
     required int? lineNumber,
     required String address,
     required TagKind kind,
-    required String type,
-  })  : _type = type,
-        _access = name[0] == "_" ? "private" : "public",
+    required this.isAbstract,
+    List<String>? typeList,
+    String? directive,
+  })  : _access = name[0] == "_" ? "private" : "public",
         super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
           address: address,
           kind: kind,
+          typeList: typeList,
+          directive: directive,
         );
   final String _access;
-  final String _type;
-
-  String get type => "type:$_type";
 
   String get access => "access:$_access";
+  final bool isAbstract;
 
   @override
-  String get toLine {
+  List<String> get tagComponent {
     final _res = [
       name,
       filePath,
@@ -43,9 +46,15 @@ abstract class DeclarationTag extends Tag {
       kind.toValue(),
       access,
       lineNumberText,
-      type
     ];
-    return _res.join("\t");
+    if (typeText != null) {
+      String _type = typeText!;
+      if (isAbstract) {
+        _type = "Abstract" + _type;
+      }
+      _res.add(_type);
+    }
+    return _res;
   }
 
   static List<DeclarationTag> fromDeclaration(
@@ -56,38 +65,73 @@ abstract class DeclarationTag extends Tag {
     final _res = <DeclarationTag>[];
 
     /// Class
-    final klassList = Tag.typeList<ClassDeclaration>(declarations);
+    final klassList = Tag.whereTypeList<ClassDeclaration>(declarations);
     if (klassList.isNotEmpty) {
       for (final d in klassList) {
+        final _name = d.name.name;
         final _tag = KlassTag(
-          name: d.name.name,
+          name: _name,
           filePath: relativePath,
           isAbstract: d.isAbstract,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
-          extend: d.extendsClause.toString(),
-          implement: d.implementsClause.toString(),
-          withs: d.withClause.toString(),
+          extend: d.extendsClause?.toString(),
+          implement: d.implementsClause?.toString(),
+          withs: d.withClause?.toString(),
+          directive: _name,
         );
-
         _res.add(_tag);
+
+        /// Member
+        final memberList = d.members;
+
+        /// Field
+        // final fieldList = Tag.whereTypeList<FieldDeclaration>(memberList);
+        // if (fieldList.isNotEmpty) {
+        // for (final field in fieldList) {
+        // final _f = field.fields;
+        // final _type = _f.type?.toString();
+        // final _keyword = _f.keyword?.toString();
+        // final _name = _f.variables.map((e) => e.name.name).join("");
+        // final _tag = FieldTag(
+        // name: _name,
+        // filePath: relativePath,
+        // lineNumber: Tag.getLineNumber(lineInfo, field.offset),
+        // keyword: _keyword,
+        // type: _type,
+        // );
+        // _res.add(_tag);
+        // }
+
+        /// Method
+        final methodList = Tag.whereTypeList<FunctionDeclaration>(memberList);
+        if (memberList.isNotEmpty) {
+          for (final m in memberList) {
+            print(m.runtimeType);
+            // final _tag = MethodTag(
+            // );
+
+            _res.add(_tag);
+          }
+        }
       }
     }
 
     /// Functions
-    final funcList = Tag.typeList<FunctionDeclaration>(declarations);
+    final funcList = Tag.whereTypeList<FunctionDeclaration>(declarations);
     if (funcList.isNotEmpty) {
       for (final d in funcList) {
         final _tag = FunctionsTag(
           name: d.name.name,
           filePath: relativePath,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
+          isGetter: d.isGetter,
+          isSetter: d.isSetter,
           type: d.returnType.toString(),
           parameters: d.functionExpression.parameters.toString(),
         );
         _res.add(_tag);
       }
     }
-
     return _res;
   }
 }

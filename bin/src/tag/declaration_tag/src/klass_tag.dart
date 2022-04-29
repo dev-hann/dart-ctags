@@ -6,18 +6,18 @@ class KlassTag extends DeclarationTag {
     required String filePath,
     required bool isAbstract,
     required int? lineNumber,
-    required String extend,
-    required String implement,
-    required String withs,
+    required String? extend,
+    required String? implement,
+    required String? withs,
+    required String directive,
   }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
           address: '/^;"',
           kind: TagKind.classes,
-          type: (isAbstract ? "Abstract class" : "class") +
-              (extend ?? "") +
-              (implement ?? "") +
-              (withs ?? ""),
+          isAbstract: isAbstract,
+          directive: directive,
+          typeList: ["class", (extend ?? ""), (implement ?? ""), (withs ?? "")],
         );
 }

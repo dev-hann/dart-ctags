@@ -1,7 +1,6 @@
 library tag;
 
 import 'package:analyzer/source/line_info.dart';
-import 'package:path/path.dart' as path;
 export './directive_tag/directive_tag.dart';
 
 part 'tag_kind.dart';
@@ -16,17 +15,11 @@ abstract class Tag {
     required this.address,
     required this.kind,
     this.directive,
+    this.typeList,
   }) : _name = name;
 
+  /// Name
   final String _name;
-  final String filePath;
-  final int? lineNumber;
-  final String? directive;
-
-  String get lineNumberText {
-    if (lineNumber == null) return "";
-    return "line:$lineNumber";
-  }
 
   String get name {
     final _blackList = [...kind.blackList(), "'", '"', ";"];
@@ -37,12 +30,42 @@ abstract class Tag {
     return _res;
   }
 
+  final String filePath;
+
+  /// LineNumber
+  final int? lineNumber;
+
+  String get lineNumberText {
+    if (lineNumber == null) return "";
+    return "line:$lineNumber";
+  }
+
+  /// Directive
+  final String? directive;
+
+  String? get directiveText {
+    if (directive == null) return null;
+    return "directive:$directive";
+  }
+
+  /// TypeList
+  final List<String>? typeList;
+
+  String? get typeText {
+    if (typeList == null) return null;
+    String _res = typeList!.join(" ");
+    while (_res.contains("  ")) {
+      _res = _res.replaceAll("  ", " ");
+    }
+    if (_res.isEmpty) return null;
+    return "type:" + _res.trim();
+  }
+
   final String address;
+
   final TagKind kind;
 
-  String get relativePath => path.relative(filePath, from: '.');
-
-  static List<T> typeList<T>(List list) {
+  static List<T> whereTypeList<T>(List list) {
     return list.whereType<T>().toList();
   }
 
@@ -51,5 +74,9 @@ abstract class Tag {
     return info.getLocation(offset).lineNumber;
   }
 
-  String get toLine;
+  List<String> get tagComponent;
+
+  String get toTag {
+    return tagComponent.join("\t");
+  }
 }

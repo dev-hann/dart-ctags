@@ -1,37 +1,24 @@
 part of declaration_tag;
 
-class FunctionsTag extends DeclarationTag {
+class FunctionsTag extends MethodTag {
   FunctionsTag({
     required String name,
     required String filePath,
     required int? lineNumber,
     required String type,
+    required bool isGetter,
+    required bool isSetter,
     required String parameters,
-  })  : _signature = parameters,
-        super(
+  }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
-          address: '/^;"',
-          kind: TagKind.functions,
           type: type,
+          isAbstract: false,
+          isGetter: isGetter,
+          isSetter: isSetter,
+          parameters: parameters,
+          kind: TagKind.functions,
+          directives: null,
         );
-  final String _signature;
-
-  String get signature => "signature:$_signature";
-
-  @override
-  String get toLine {
-    final _res = [
-      name,
-      filePath,
-      address,
-      kind.toValue(),
-      access,
-      lineNumberText,
-      signature,
-      type,
-    ];
-    return _res.join("\t");
-  }
 }

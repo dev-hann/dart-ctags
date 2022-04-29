@@ -32,7 +32,7 @@ class Tags {
     );
 
     for (final tag in directiveTagList) {
-      _res.add(tag.toLine);
+      _res.add(tag.toTag);
     }
 
     final declarationTagList = DeclarationTag.fromDeclaration(
@@ -41,8 +41,9 @@ class Tags {
       lineNumber ? unit.lineInfo : null,
     );
     for (final tag in declarationTagList) {
-      _res.add(tag.toLine);
+      _res.add(tag.toTag);
     }
-    return _res;
+    return [];
+    // return _res;
   }
 }
