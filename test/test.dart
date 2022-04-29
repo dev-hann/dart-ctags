@@ -8,13 +8,12 @@ void main() {
   final _current = path.join(path.current, "test");
 
   ParseStringResult _parse(String filePath) {
-    final _path = path.join(_current, filePath);
     return parseFile(
-        path: _path, featureSet: FeatureSet.latestLanguageVersion());
+        path: filePath, featureSet: FeatureSet.latestLanguageVersion());
   }
 
   test("Test Klass", () {
+    final _path = path.join(_current, "test_klass.dart");
     final _res = _parse("test_klass.dart");
-    print(_res.unit);
   });
 }

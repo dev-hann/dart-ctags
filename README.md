@@ -12,7 +12,9 @@
 * [Flutter](https://flutter.dev)
 
 ## Installation
-
+```dart
+dart pub global activate -sgit https://github.com/yoehwan/dart-ctags.git
+```
 
 
 ## Useage
