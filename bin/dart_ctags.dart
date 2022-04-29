@@ -50,12 +50,3 @@ void main(List<String> arguments) async {
     File(opts.output!).writeAsString(_res);
   }
 }
-
-class A {
-  final int a = 1;
-  final int _a = 2;
-  String b = "";
-  String _b = "";
-  final c = 3;
-  final _c = "";
-}
