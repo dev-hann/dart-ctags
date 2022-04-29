@@ -1,4 +1,4 @@
-library test_dart;
+library directive;
 
 import 'dart:io';
 import 'dart:ffi';
@@ -6,8 +6,4 @@ import 'dart:ffi';
 import 'package:args/args.dart';
 import 'package:analyzer/dart/analysis/analysis_context.dart';
 
-// part './test_directive.dart';
-
-// part of test_dart;
-
-
+part 'test_klass.dart';
