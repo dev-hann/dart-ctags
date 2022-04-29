@@ -75,6 +75,8 @@ class A {
   kk(String value) {}
 }
 
+abstract class D{}
+
 class B {}
 
 class C with A {}

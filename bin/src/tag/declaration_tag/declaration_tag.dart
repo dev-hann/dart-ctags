@@ -9,7 +9,9 @@ import '../tag.dart';
 part 'src/klass_tag.dart';
 
 part 'src/functions_tag.dart';
+
 part 'src/field_tag.dart';
+
 part 'src/method_tag.dart';
 
 abstract class DeclarationTag extends Tag {
@@ -48,11 +50,10 @@ abstract class DeclarationTag extends Tag {
       lineNumberText,
     ];
     if (typeText != null) {
-      String _type = typeText!;
       if (isAbstract) {
-        _type = "Abstract" + _type;
+        typeList!.insert(0, "Abstract");
       }
-      _res.add(_type);
+      _res.add(typeText!);
     }
     return _res;
   }
@@ -103,16 +104,16 @@ abstract class DeclarationTag extends Tag {
         // }
 
         /// Method
-        final methodList = Tag.whereTypeList<FunctionDeclaration>(memberList);
-        if (memberList.isNotEmpty) {
-          for (final m in memberList) {
-            print(m.runtimeType);
-            // final _tag = MethodTag(
-            // );
+        // final methodList = Tag.whereTypeList<FunctionDeclaration>(memberList);
+        // if (memberList.isNotEmpty) {
+        //   for (final m in memberList) {
+        // print(m.runtimeType);
+        // final _tag = MethodTag(
+        // );
 
-            _res.add(_tag);
-          }
-        }
+        // _res.add(_tag);
+        // }
+        // }
       }
     }
 
