@@ -22,22 +22,41 @@ abstract class DeclarationTag extends Tag {
     required String address,
     required TagKind kind,
     required this.isAbstract,
-    List<String>? typeList,
-    String? directive,
-  })  : _access = name[0] == "_" ? "private" : "public",
-        super(
+    required this.klass,
+    required this.type,
+    this.showAccess = true,
+  }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
           address: address,
           kind: kind,
-          typeList: typeList,
-          directive: directive,
         );
-  final String _access;
+  final String? klass;
 
-  String get access => "access:$_access";
+  String get klassText {
+    return "class:$klass";
+  }
+
+  final bool showAccess;
+
+  String get accessText {
+    final _access = name[0] == "_" ? "private" : "public";
+    return "access:$_access";
+  }
+
   final bool isAbstract;
+
+  /// Type
+  final String? type;
+
+  String get typeText {
+    String _type = type!;
+    if (isAbstract) {
+      _type = "Abstract $_type";
+    }
+    return "type:$_type";
+  }
 
   @override
   List<String> get tagComponent {
@@ -46,15 +65,18 @@ abstract class DeclarationTag extends Tag {
       filePath,
       address,
       kind.toValue(),
-      access,
       lineNumberText,
     ];
-    if (typeText != null) {
-      if (isAbstract) {
-        typeList!.insert(0, "Abstract");
-      }
-      _res.add(typeText!);
+    if (type != null) {
+      _res.add(typeText);
     }
+    if (showAccess) {
+      _res.add(accessText);
+    }
+    if (klass != null) {
+      _res.add(klassText);
+    }
+
     return _res;
   }
 
@@ -69,18 +91,50 @@ abstract class DeclarationTag extends Tag {
     final klassList = Tag.whereTypeList<ClassDeclaration>(declarations);
     if (klassList.isNotEmpty) {
       for (final d in klassList) {
-        final _name = d.name.name;
+        final _className = d.name.name;
+        final _classLineNumber = Tag.getLineNumber(lineInfo, d.offset);
         final _tag = KlassTag(
-          name: _name,
+          name: _className,
           filePath: relativePath,
           isAbstract: d.isAbstract,
           lineNumber: Tag.getLineNumber(lineInfo, d.offset),
-          extend: d.extendsClause?.toString(),
-          implement: d.implementsClause?.toString(),
-          withs: d.withClause?.toString(),
-          directive: _name,
         );
         _res.add(_tag);
+        if (d.extendsClause != null) {
+          final name = d.extendsClause!.superclass.name.name;
+          _res.add(
+            KlassTag.extend(
+              klass: _className,
+              name: name,
+              filePath: relativePath,
+              lineNumber: _classLineNumber,
+            ),
+          );
+        }
+
+        if (d.implementsClause != null) {
+          final name = d.implementsClause!.interfaces.join();
+          _res.add(
+            KlassTag.implement(
+              klass: _className,
+              name: name,
+              filePath: relativePath,
+              lineNumber: _classLineNumber,
+            ),
+          );
+        }
+
+        if (d.withClause != null) {
+          final name = d.withClause!.mixinTypes.join();
+          _res.add(
+            KlassTag.withs(
+              klass: _className,
+              name: name,
+              filePath: relativePath,
+              lineNumber: _classLineNumber,
+            ),
+          );
+        }
 
         /// Member
         final memberList = d.members;
@@ -104,16 +158,23 @@ abstract class DeclarationTag extends Tag {
         // }
 
         /// Method
-        // final methodList = Tag.whereTypeList<FunctionDeclaration>(memberList);
-        // if (memberList.isNotEmpty) {
-        //   for (final m in memberList) {
-        // print(m.runtimeType);
-        // final _tag = MethodTag(
-        // );
-
-        // _res.add(_tag);
-        // }
-        // }
+        final methodList = Tag.whereTypeList<MethodDeclaration>(memberList);
+        if (memberList.isNotEmpty) {
+          for (final m in methodList) {
+            final _tag = MethodTag(
+              name: m.name.name,
+              filePath: relativePath,
+              lineNumber: Tag.getLineNumber(lineInfo, m.offset),
+              type: m.returnType?.toString(),
+              isAbstract: m.isAbstract,
+              isGetter: m.isGetter,
+              isSetter: m.isSetter,
+              parameters: m.parameters.toString(),
+              klass: _className,
+            );
+            _res.add(_tag);
+          }
+        }
       }
     }
 

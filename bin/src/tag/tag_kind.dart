@@ -1,61 +1,61 @@
 part of tag;
 
 enum TagKind {
-  library,
-  export,
-  imports,
-  dart,
-  pub,
-  local,
-  part,
-  partOf,
-  consts,
-  variables,
-  functions,
-  enums,
-  constants,
-  mixins,
-  classes,
-  extend,
-  withs,
-  implement,
-  constructors,
-  abstractFunction,
-  fields,
-  methods,
-  staticMethods,
-  getters,
-  setters,
-  operators,
+  library,  // short 'l'
+  export, // short 't'
+  imports,  // short 'i'
+  dart, // short 'D'
+  pub,  // short 'U'
+  local,  // short 'L'
+  part, // short 'P'
+  partOf, // short 'p'
+  consts, // short 'C'
+  variables,  // short 'v'
+  functions,  // short 'F'
+  enums,  // short 'E'
+  constants,  // short 'e'
+  mixins, // short 'x'
+  classes,  // short 'c'
+  extend, // short 'd'
+  withs,  // short 'w'
+  implement,  // short 'z'
+  constructors, // short 'r'
+  abstractFunction, // short 'a'
+  fields, // short 'f'
+  methods,  // short 'm'
+  staticMethods,  // short 'M'
+  getters,  // short 'g'
+  setters,  // short 's'
+  operators,  // short 'o'
 }
 
 const _value = <String>[
-  'l',
-  't',
-  'i',
-  'D',
-  'U',
-  'L',
-  'P',
-  'p',
-  'C',
-  'v',
-  'F',
-  'E',
-  'e',
-  'x',
-  'c',
-  'd',
-  'w',
-  'z',
-  'r',
-  'a',
-  'f',
-  'm',
-  'M',
-  'g',
-  's',
-  'o',
+  'l', // long 'library'
+  't', // long 'export'
+  'i', // long 'imports'
+  'D', // long 'dart'
+  'U', // long 'pub'
+  'L', // long 'local'
+  'P', // long 'part'
+  'p', // long 'partOf'
+  'C', // long 'consts'
+  'v', // long 'variables'
+  'F', // long 'functions'
+  'E', // long 'enums'
+  'e', // long 'constants'
+  'x', // long 'mixins'
+  'c', // long 'classes'
+  'd', // long 'extend'
+  'w', // long 'withs'
+  'z', // long 'implement'
+  'r', // long 'constructors'
+  'a', // long 'abstractFunction'
+  'f', // long 'fields'
+  'm', // long 'methods'
+  'M', // long 'staticMethods'
+  'g', // long 'getters'
+  's', // long 'setters'
+  'o', // long 'operators'
 ];
 
 extension TagKindValue on TagKind {

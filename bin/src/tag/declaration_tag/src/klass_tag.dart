@@ -6,18 +6,73 @@ class KlassTag extends DeclarationTag {
     required String filePath,
     required bool isAbstract,
     required int? lineNumber,
-    required String? extend,
-    required String? implement,
-    required String? withs,
-    required String directive,
+    TagKind? kind,
+    String? klass,
+    String? type,
+    bool? showAccess,
   }) : super(
           name: name,
           filePath: filePath,
           lineNumber: lineNumber,
           address: '/^;"',
-          kind: TagKind.classes,
+          kind: kind ?? TagKind.classes,
           isAbstract: isAbstract,
-          directive: directive,
-          typeList: ["class", (extend ?? ""), (implement ?? ""), (withs ?? "")],
+          klass: klass,
+          type: type ?? "class",
+          showAccess: showAccess ?? true,
         );
+
+  factory KlassTag.extend({
+    required String name,
+    required String filePath,
+    required int? lineNumber,
+    required String klass,
+  }) {
+    return KlassTag(
+      name: name,
+      filePath: filePath,
+      isAbstract: false,
+      lineNumber: lineNumber,
+      kind: TagKind.extend,
+      klass: klass,
+      type: "",
+      showAccess: false,
+    );
+  }
+
+  factory KlassTag.implement({
+    required String name,
+    required String filePath,
+    required int? lineNumber,
+    required String klass,
+  }) {
+    return KlassTag(
+      name: name,
+      filePath: filePath,
+      isAbstract: false,
+      lineNumber: lineNumber,
+      kind: TagKind.implement,
+      klass: klass,
+      type: "",
+      showAccess: false,
+    );
+  }
+
+  factory KlassTag.withs({
+    required String name,
+    required String filePath,
+    required int? lineNumber,
+    required String klass,
+  }) {
+    return KlassTag(
+      name: name,
+      filePath: filePath,
+      isAbstract: false,
+      lineNumber: lineNumber,
+      kind: TagKind.withs,
+      klass: klass,
+      type: "",
+      showAccess: false,
+    );
+  }
 }

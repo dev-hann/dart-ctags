@@ -44,35 +44,35 @@ void main(List<String> arguments) async {
   print(lines.join("\n"));
 }
 
-String _main2(String aaa, dynamic xxx, {required String value}) {
-  return "";
-}
-
-String _main3(String aaa, dynamic xxx, [String value = "xxx"]) {
-  return "";
-}
+// String _main2(String aaa, dynamic xxx, {required String value}) {
+//   return "";
+// }
+//
+// String _main3(String aaa, dynamic xxx, [String value = "xxx"]) {
+//   return "";
+// }
 
 String get getttter => "Gettter";
 
 class A {
-  final String a = "";
-  String b = "b";
-  int aaaaa = 1;
-  final lllll = "123123";
-  void hello() {}
-  String aa() {
-    return "";
-  }
-
-  int bb() {
-    return 1;
-  }
-
-  dynamic _cc() {
-    return 0;
-  }
-
-  kk(String value) {}
+  // final String a = "";
+  // String b = "b";
+  // int aaaaa = 1;
+  // final lllll = "123123";
+  // void hello() {}
+  // String aa() {
+  //   return "";
+  // }
+  //
+  // int bb() {
+  //   return 1;
+  // }
+  //
+  // dynamic _cc() {
+  //   return 0;
+  // }
+  //
+  // kk(String value) {}
 }
 
 abstract class D{}

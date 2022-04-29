@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+A	dart_ctags.dart	/A/;"	d	line:86	class:ABA
+A	dart_ctags.dart	/A/;"	d	line:88	class:ABC
+A	dart_ctags.dart	/A/;"	w	line:82	class:C
+A	dart_ctags.dart	/class A {/;"	c	access:public	line:57	type:class
+ABA	dart_ctags.dart	/class ABA extends A implements B {/;"	c	access:public	line:86	type:class
+ABC	dart_ctags.dart	/class ABC extends A implements B {/;"	c	access:public	line:88	type:class
+B	dart_ctags.dart	/B/;"	z	line:86	class:ABA
+B	dart_ctags.dart	/B/;"	z	line:88	class:ABC
+B	dart_ctags.dart	/class B {/;"	c	access:public	line:80	type:class
+C	dart_ctags.dart	/class C with A {/;"	c	access:public	line:82	type:class
+D	dart_ctags.dart	/abstract class D {/;"	c	access:public	line:78	type:abstract class
+dart:io	dart_ctags.dart	/^;"	D	line:3	directive:import
+dart_ctags	dart_ctags.dart	/^;"	l	line:1	null
+getttter	dart_ctags.dart	/^;"	F	access:public	line:55	signature:null	type:String
+import	dart_ctags.dart	/import/;"	i	line:1	type:directives
+main	dart_ctags.dart	/^;"	F	access:public	line:21	signature:(List<String> arguments)	type:void
+package:analyzer/dart/analysis/features.dart	dart_ctags.dart	/^;"	U	line:5	directive:import
+package:analyzer/dart/analysis/utilities.dart	dart_ctags.dart	/^;"	U	line:6	directive:import
+package:args/args.dart	dart_ctags.dart	/^;"	U	line:7	directive:import
+package:path/path.dart as path	dart_ctags.dart	/^;"	U	line:8	directive:import
+src/arguments.dart	dart_ctags.dart	/^;"	P	line:13	null
+src/enums.dart	dart_ctags.dart	/^;"	P	line:15	null
+src/options.dart	dart_ctags.dart	/^;"	P	line:19	null
+src/tag/declaration_tag/declaration_tag.dart	dart_ctags.dart	/^;"	L	line:10	directive:import
+src/tag/tag.dart	dart_ctags.dart	/^;"	L	line:11	directive:import
+src/tags.dart	dart_ctags.dart	/^;"	P	line:17	null

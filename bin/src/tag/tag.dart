@@ -15,7 +15,6 @@ abstract class Tag {
     required this.address,
     required this.kind,
     this.directive,
-    this.typeList,
   }) : _name = name;
 
   /// Name
@@ -46,19 +45,6 @@ abstract class Tag {
   String? get directiveText {
     if (directive == null) return null;
     return "directive:$directive";
-  }
-
-  /// TypeList
-  final List<String>? typeList;
-
-  String? get typeText {
-    if (typeList == null) return null;
-    String _res = typeList!.join(" ");
-    while (_res.contains("  ")) {
-      _res = _res.replaceAll("  ", " ");
-    }
-    if (_res.isEmpty) return null;
-    return "type:" + _res.trim();
   }
 
   final String address;

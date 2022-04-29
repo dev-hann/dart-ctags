@@ -7,6 +7,7 @@ class FieldTag extends DeclarationTag {
     required int? lineNumber,
     required String? keyword,
     required String? type,
+    required String? klass,
   }) : super(
           name: name,
           filePath: filePath,
@@ -14,6 +15,8 @@ class FieldTag extends DeclarationTag {
           address: '/^;"',
           kind: TagKind.methods,
           isAbstract: false,
-          typeList: [(keyword ?? "") + (type ?? "dynamic")],
+          type: (keyword ?? "") + (type ?? "dynamic"),
+          // typeList: [(keyword ?? "") + (type ?? "dynamic")],
+          klass: klass,
         );
 }

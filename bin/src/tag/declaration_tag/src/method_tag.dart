@@ -5,12 +5,12 @@ class MethodTag extends DeclarationTag {
     required String name,
     required String filePath,
     required int? lineNumber,
-    required String type,
+    required String? type,
     required bool isAbstract,
     required bool isGetter,
     required bool isSetter,
     required String parameters,
-    required String? directives,
+    required String? klass,
     TagKind? kind,
   })  : _signature = parameters,
         super(
@@ -20,8 +20,13 @@ class MethodTag extends DeclarationTag {
           address: '/^;"',
           isAbstract: isAbstract,
           kind: kind ?? TagKind.methods,
-          directive: directives,
-          typeList: [isGetter ? "get" : "", isSetter ? "set" : "", type],
+          klass: klass,
+          type: type??"void",
+          // typeList: [
+          //   isGetter ? "get" : "",
+          //   isSetter ? "set" : "",
+          //   type ?? "void"
+          // ],
         );
   final String _signature;
 

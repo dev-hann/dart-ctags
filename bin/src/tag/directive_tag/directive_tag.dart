@@ -40,7 +40,7 @@ abstract class DirectiveTag extends Tag {
     ];
 
     if (directive != null) {
-      _res.add("directive:$directive");
+      _res.add(directiveText!);
     }
     return _res;
   }
