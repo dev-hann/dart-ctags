@@ -18,6 +18,7 @@ abstract class MethodTag extends DeclarationTag {
           lineNumber: lineNumber,
           isAbstract: isAbstract,
           kind: kind ?? TagKind.methods,
+          showAccess: true,
           type: Tag.join([
             (isGetter ? "get" : ""),
             (isSetter ? "set" : ""),

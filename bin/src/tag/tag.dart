@@ -46,12 +46,10 @@ abstract class Tag {
     required this.kind,
   });
 
-  /// Name
   final String name;
 
   final String filePath;
 
-  /// LineNumber
   final int? lineNumber;
 
   String get lineNumberText {

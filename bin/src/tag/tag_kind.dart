@@ -19,6 +19,7 @@ enum TagKind {
   extend, // short 'd'
   withs,  // short 'w'
   implement,  // short 'z'
+  mixinOn,// short 'n'
   constructors, // short 'r'
   abstractFunction, // short 'a'
   fields, // short 'f'
@@ -48,6 +49,7 @@ const _value = <String>[
   'd', // long 'extend'
   'w', // long 'withs'
   'z', // long 'implement'
+  'n', // long 'on'
   'r', // long 'constructors'
   'a', // long 'abstractFunction'
   'f', // long 'fields'
@@ -135,6 +137,9 @@ extension TagKindValue on TagKind {
         // TODO: Handle this case.
         break;
       case TagKind.operators:
+        // TODO: Handle this case.
+        break;
+      case TagKind.mixinOn:
         // TODO: Handle this case.
         break;
     }
