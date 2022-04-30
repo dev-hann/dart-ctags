@@ -50,19 +50,3 @@ void main(List<String> arguments) async {
     File(opts.output!).writeAsString(_res);
   }
 }
-
-class A {}
-
-class B {}
-
-class C {}
-
-class D extends A {}
-
-class E extends B implements C {}
-
-class F extends A with C implements D {}
-
-mixin ZZ {}
-
-mixin KK on A implements C {}
