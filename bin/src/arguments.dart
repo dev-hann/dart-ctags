@@ -5,7 +5,8 @@ class Arguments {
 
   void _initFlags() {
     _parser.addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
-    _parser.addFlag('line-numbers', abbr: 'l', help: "Add Line Number");
+    _parser.addFlag('line-numbers',
+        abbr: 'l', help: "Add Line Number", negatable: false);
     _parser.addOption('output',
         abbr: 'o', help: 'Output file', valueHelp: 'File');
   }
