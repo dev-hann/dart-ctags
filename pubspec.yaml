@@ -1,11 +1,12 @@
 name: dart_ctags
-description: Ctags generate for Vim.
+description: Ctags generator for Vim.
 version: 1.0.0
 homepage: https://github.com/yoehwan/dart-ctags
 
 environment:
   sdk: '>=2.16.2 <3.0.0'
-
+executables:
+  dart_ctags: dart_ctags
 dev_dependencies:
   lints: ^1.0.1
   test: ^1.21.1

@@ -18,7 +18,7 @@ Enjoy!
 
 ## Installation
 ```dart
-git clone https://github.com/yoehwan/dart_ctags.git
+git clone https://github.com/yoehwan/dart-ctags.git
 cd dart_ctags
 dart pub global activate -s path .
 ```
